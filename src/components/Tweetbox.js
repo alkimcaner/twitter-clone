@@ -7,12 +7,12 @@ const Tweetbox = () => {
     <div className="feed__tweetbox">
       <img src={ProfileIcon} alt="" className="feed__tweetbox__profileicon" />
       <div className="tweetinput">
-        <div className="tweetinput__box"></div>
         <input
           type="text"
           placeholder="What's happening?"
-          className="tweetinput__box--input"
+          className="tweetinput__input"
         />
+
         <div className="tweetsend">
           <div className="tweetsend__media">
             <img src={MediaIcon} alt="" className="tweetsend__media__icon" />

@@ -95,7 +95,6 @@ body {
 
 .feed__tweetbox {
   display: flex;
-  gap: 0.5rem;
   border-bottom: 1px solid rgb(230, 230, 230);
   padding: 0 1rem;
 }
@@ -108,14 +107,14 @@ body {
 .tweetinput {
   display: flex;
   flex-direction: column;
-  width: 100%;
   gap: 1rem;
+  padding: 1rem;
+  width: 100%;
 }
 
-.tweetinput__box--input {
+.tweetinput__input {
   border: none;
-  font-size: 22px;
-  flex: 1;
+  font-size: large;
   outline: none;
 }
 
