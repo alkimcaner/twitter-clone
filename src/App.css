@@ -39,6 +39,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  padding: 1rem;
 }
 
 .widget {
@@ -90,13 +91,11 @@ body {
   font-weight: 500;
   color: black;
   text-decoration: none;
-  padding: 1rem;
 }
 
 .feed__tweetbox {
   display: flex;
   border-bottom: 1px solid rgb(230, 230, 230);
-  padding: 0 1rem;
 }
 
 .feed__tweetbox__profileicon {
@@ -104,7 +103,7 @@ body {
   height: 3rem;
 }
 
-.tweetinput {
+.feed__tweetbox__tweet {
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -112,13 +111,13 @@ body {
   width: 100%;
 }
 
-.tweetinput__input {
+.feed__tweetbox__tweet__input {
   border: none;
   font-size: large;
   outline: none;
 }
 
-.tweetsend {
+.feed__tweetbox__tweet__send {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -126,7 +125,7 @@ body {
   padding: 1rem;
 }
 
-.tweetsend__media__icon:hover {
+.feed__tweetbox__tweet__send__media__icon:hover {
   cursor: pointer;
 }
 
@@ -149,7 +148,7 @@ body {
 
 @media screen and (max-width: 1400px) {
   .app {
-    max-width: 85vw;
+    max-width: 90vw;
   }
   .sidebar__nav__link__text {
     display: none;
@@ -159,6 +158,9 @@ body {
   }
   .feed {
     grid-column: span 10;
+  }
+  .icon {
+    margin-right: 0;
   }
 }
 
@@ -174,8 +176,5 @@ body {
   }
   .feed {
     grid-column: span 15;
-  }
-  .icon {
-    margin-right: 0;
   }
 }

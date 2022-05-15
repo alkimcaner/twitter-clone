@@ -6,16 +6,20 @@ const Tweetbox = () => {
   return (
     <div className="feed__tweetbox">
       <img src={ProfileIcon} alt="" className="feed__tweetbox__profileicon" />
-      <div className="tweetinput">
+      <div className="feed__tweetbox__tweet">
         <input
           type="text"
           placeholder="What's happening?"
-          className="tweetinput__input"
+          className="feed__tweetbox__tweet__input"
         />
 
-        <div className="tweetsend">
-          <div className="tweetsend__media">
-            <img src={MediaIcon} alt="" className="tweetsend__media__icon" />
+        <div className="feed__tweetbox__tweet__send">
+          <div className="feed__tweetbox__tweet__send__media">
+            <img
+              src={MediaIcon}
+              alt=""
+              className="feed__tweetbox__tweet__send__media__icon"
+            />
           </div>
           <button className="btn">Tweet</button>
         </div>
