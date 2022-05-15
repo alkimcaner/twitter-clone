@@ -4,7 +4,7 @@ import Tweetbox from "./Tweetbox";
 const Feed = () => {
   return (
     <div className="feed">
-      <a href="" className="feed__home">
+      <a href="#" className="feed__home">
         Home
       </a>
       <Tweetbox />

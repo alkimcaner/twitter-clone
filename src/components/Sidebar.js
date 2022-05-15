@@ -13,55 +13,55 @@ const Sidebar = () => {
   return (
     <div className="sidebar">
       <a href="#">
-        <img src={TwitterIcon} alt="" className="twittericon" />
+        <img src={TwitterIcon} alt="" className="sidebar__twittericon" />
       </a>
-      <nav className="navbar">
+      <nav className="sidebar__nav">
         <a href="#">
-          <div className="navlink">
+          <div className="sidebar__nav__link">
             <img src={HomeIcon} alt="" className="icon" />
-            Home
+            <span className="sidebar__nav__link__text">Home</span>
           </div>
         </a>
         <a href="#">
-          <div className="navlink">
+          <div className="sidebar__nav__link">
             <img src={ExploreIcon} alt="" className="icon" />
-            Explore
+            <span className="sidebar__nav__link__text">Explore</span>
           </div>
         </a>
         <a href="#">
-          <div className="navlink">
+          <div className="sidebar__nav__link">
             <img src={NotificationsIcon} alt="" className="icon" />
-            Notifications
+            <span className="sidebar__nav__link__text">Notifications</span>
           </div>
         </a>
         <a href="#">
-          <div className="navlink">
+          <div className="sidebar__nav__link">
             <img src={MessagesIcon} alt="" className="icon" />
-            Messages
+            <span className="sidebar__nav__link__text">Messages</span>
           </div>
         </a>
         <a href="#">
-          <div className="navlink">
+          <div className="sidebar__nav__link">
             <img src={BookmarkIcon} alt="" className="icon" />
-            Bookmark
+            <span className="sidebar__nav__link__text">Bookmarks</span>
           </div>
         </a>
         <a href="#">
-          <div className="navlink">
+          <div className="sidebar__nav__link">
             <img src={ListsIcon} alt="" className="icon" />
-            Lists
+            <span className="sidebar__nav__link__text">Lists</span>
           </div>
         </a>
         <a href="#">
-          <div className="navlink">
+          <div className="sidebar__nav__link">
             <img src={ProfileIcon} alt="" className="icon" />
-            Profile
+            <span className="sidebar__nav__link__text">Profile</span>
           </div>
         </a>
         <a href="#">
-          <div className="navlink">
+          <div className="sidebar__nav__link">
             <img src={MoreIcon} alt="" className="icon" />
-            More
+            <span className="sidebar__nav__link__text">More</span>
           </div>
         </a>
       </nav>
