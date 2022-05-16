@@ -23,7 +23,7 @@ body {
   display: grid;
   grid-template-columns: repeat(16, 1fr);
   max-width: 65vw;
-  min-height: 100vh;
+  height: 100vh;
   margin: 0 auto;
 }
 
