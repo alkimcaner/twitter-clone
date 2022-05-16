@@ -158,7 +158,7 @@ body {
 .feed__tweet__content {
   display: flex;
   flex-direction: column;
-  gap: 0.1rem;
+  gap: 0.4rem;
 }
 
 .feed__tweet__content__user {
@@ -175,6 +175,15 @@ body {
   color: grey;
   font-weight: lighter;
   margin-left: 0.5rem;
+}
+
+.feed__tweet__content__image {
+  width: 100%;
+  border-radius: 1rem;
+}
+
+.feed__tweet__content__image:hover {
+  cursor: pointer;
 }
 
 /* Widget */

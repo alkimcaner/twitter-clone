@@ -14,7 +14,14 @@ const Tweet = ({ tweet }) => {
             @{tweet.username}
           </span>
         </div>
-        <span>{tweet.text}</span>
+        {tweet.text}
+        {tweet.image && (
+          <img
+            src={tweet.image}
+            alt="media"
+            className="feed__tweet__content__image"
+          />
+        )}
       </div>
     </div>
   );
