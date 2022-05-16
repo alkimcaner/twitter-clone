@@ -5,7 +5,7 @@ import MediaIcon from "../Icons/media.svg";
 const Tweetbox = () => {
   return (
     <div className="feed__tweetbox">
-      <img src={ProfileIcon} alt="" className="feed__tweetbox__profileicon" />
+      <img src={ProfileIcon} alt="" className="profileicon" />
       <div className="feed__tweetbox__tweet">
         <input
           type="text"
