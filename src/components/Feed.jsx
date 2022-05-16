@@ -15,7 +15,6 @@ const Feed = () => {
 
   useEffect(() => {
     fetchTweets();
-    console.log("useef");
   }, []);
 
   return (

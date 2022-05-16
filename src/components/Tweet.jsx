@@ -1,5 +1,5 @@
 import React from "react";
-import ProfileIcon from "../Icons/avatar.svg";
+import ProfileIcon from "../assets/Icons/avatar.svg";
 
 const Tweet = ({ tweet }) => {
   return (

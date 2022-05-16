@@ -1,6 +1,6 @@
 import React from "react";
-import ProfileIcon from "../Icons/avatar.svg";
-import MediaIcon from "../Icons/media.svg";
+import ProfileIcon from "../assets/Icons/avatar.svg";
+import MediaIcon from "../assets/Icons/media.svg";
 
 const Tweetbox = () => {
   return (

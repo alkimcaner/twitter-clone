@@ -1,13 +1,13 @@
 import React from "react";
-import BookmarkIcon from "../Icons/bookmark.svg";
-import ExploreIcon from "../Icons/explore.svg";
-import HomeIcon from "../Icons/home.svg";
-import ListsIcon from "../Icons/lists.svg";
-import MessagesIcon from "../Icons/messages.svg";
-import MoreIcon from "../Icons/more.svg";
-import NotificationsIcon from "../Icons/notifications.svg";
-import ProfileIcon from "../Icons/profile.svg";
-import TwitterIcon from "../Icons/twitter.svg";
+import BookmarkIcon from "../assets/Icons/bookmark.svg";
+import ExploreIcon from "../assets/Icons/explore.svg";
+import HomeIcon from "../assets/Icons/home.svg";
+import ListsIcon from "../assets/Icons/lists.svg";
+import MessagesIcon from "../assets/Icons/messages.svg";
+import MoreIcon from "../assets/Icons/more.svg";
+import NotificationsIcon from "../assets/Icons/notifications.svg";
+import ProfileIcon from "../assets/Icons/profile.svg";
+import TwitterIcon from "../assets/Icons/twitter.svg";
 
 const Sidebar = () => {
   return (
