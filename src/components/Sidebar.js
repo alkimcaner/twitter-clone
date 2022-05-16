@@ -12,7 +12,7 @@ import TwitterIcon from "../Icons/twitter.svg";
 const Sidebar = () => {
   return (
     <div className="sidebar">
-      <a href="#">
+      <a href="index.html">
         <img src={TwitterIcon} alt="" className="sidebar__twittericon" />
       </a>
       <nav className="sidebar__nav">
