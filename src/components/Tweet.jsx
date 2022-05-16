@@ -1,26 +1,21 @@
 import React from "react";
+import styles from "./Tweet.module.css";
 import ProfileIcon from "../assets/Icons/avatar.svg";
 
 const Tweet = ({ tweet }) => {
   return (
-    <div className="feed__tweet">
-      <img src={ProfileIcon} alt="" className="profileicon" />
-      <div className="feed__tweet__content">
+    <div className={styles.tweet}>
+      <img src={ProfileIcon} alt="" className="global__profileicon" />
+      <div className={styles.content}>
         <div>
-          <a href="#" className="feed__tweet__content__user">
+          <a href="#" className={styles.user}>
             {tweet.username}
           </a>
-          <span className="feed__tweet__content__username">
-            @{tweet.username}
-          </span>
+          <span className={styles.username}>@{tweet.username}</span>
         </div>
         {tweet.text}
         {tweet.image && (
-          <img
-            src={tweet.image}
-            alt="media"
-            className="feed__tweet__content__image"
-          />
+          <img src={tweet.image} alt="media" className={styles.image} />
         )}
       </div>
     </div>

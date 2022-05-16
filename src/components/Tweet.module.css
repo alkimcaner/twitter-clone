@@ -1,0 +1,42 @@
+.tweet {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  border-bottom: 1px solid rgb(230, 230, 230);
+  transition: background 0.2s;
+}
+
+.tweet:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.user {
+  color: black;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.user:hover {
+  text-decoration: underline;
+}
+
+.username {
+  color: grey;
+  font-weight: lighter;
+  margin-left: 0.5rem;
+}
+
+.image {
+  width: 100%;
+  border-radius: 1rem;
+}
+
+.image:hover {
+  cursor: pointer;
+}

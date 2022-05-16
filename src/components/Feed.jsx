@@ -1,4 +1,5 @@
 import { React, useState, useEffect } from "react";
+import styles from "./Feed.module.css";
 import Tweet from "./Tweet";
 import Tweetbox from "./Tweetbox";
 import { db } from "../firebase";
@@ -18,8 +19,8 @@ const Feed = () => {
   }, []);
 
   return (
-    <div className="feed">
-      <a href="#" className="feed__home">
+    <div className={styles.feed}>
+      <a href="#" className={styles.home}>
         Home
       </a>
       <Tweetbox />

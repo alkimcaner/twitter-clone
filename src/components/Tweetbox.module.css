@@ -1,0 +1,39 @@
+.tweetbox {
+  display: flex;
+  border-bottom: 1px solid rgb(230, 230, 230);
+  padding: 0 1rem;
+}
+
+.tweet {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+  width: 100%;
+}
+
+.input {
+  border: none;
+  font-size: large;
+  outline: none;
+  padding-bottom: 1rem;
+}
+
+.input:focus {
+  border-bottom: 1px solid rgb(230, 230, 230);
+}
+
+.send {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.2rem;
+}
+
+.media {
+  display: flex;
+}
+
+.mediaicon:hover {
+  cursor: pointer;
+}

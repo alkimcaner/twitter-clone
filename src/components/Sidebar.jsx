@@ -1,4 +1,5 @@
 import React from "react";
+import styles from "./Sidebar.module.css";
 import BookmarkIcon from "../assets/Icons/bookmark.svg";
 import ExploreIcon from "../assets/Icons/explore.svg";
 import HomeIcon from "../assets/Icons/home.svg";
@@ -11,57 +12,57 @@ import TwitterIcon from "../assets/Icons/twitter.svg";
 
 const Sidebar = () => {
   return (
-    <div className="sidebar">
+    <div className={styles.sidebar}>
       <a href="index.html">
-        <img src={TwitterIcon} alt="" className="sidebar__twittericon" />
+        <img src={TwitterIcon} alt="" className={styles.twittericon} />
       </a>
-      <nav className="sidebar__nav">
+      <nav className={styles.nav}>
         <a href="#">
-          <div className="sidebar__nav__link">
-            <img src={HomeIcon} alt="" className="icon" />
-            <span className="sidebar__nav__link__text">Home</span>
+          <div className={styles.link}>
+            <img src={HomeIcon} alt="" className={styles.icon} />
+            <span className={styles.linklabel}>Home</span>
           </div>
         </a>
         <a href="#">
-          <div className="sidebar__nav__link">
-            <img src={ExploreIcon} alt="" className="icon" />
-            <span className="sidebar__nav__link__text">Explore</span>
+          <div className={styles.link}>
+            <img src={ExploreIcon} alt="" className={styles.icon} />
+            <span className={styles.linklabel}>Explore</span>
           </div>
         </a>
         <a href="#">
-          <div className="sidebar__nav__link">
-            <img src={NotificationsIcon} alt="" className="icon" />
-            <span className="sidebar__nav__link__text">Notifications</span>
+          <div className={styles.link}>
+            <img src={NotificationsIcon} alt="" className={styles.icon} />
+            <span className={styles.linklabel}>Notifications</span>
           </div>
         </a>
         <a href="#">
-          <div className="sidebar__nav__link">
-            <img src={MessagesIcon} alt="" className="icon" />
-            <span className="sidebar__nav__link__text">Messages</span>
+          <div className={styles.link}>
+            <img src={MessagesIcon} alt="" className={styles.icon} />
+            <span className={styles.linklabel}>Messages</span>
           </div>
         </a>
         <a href="#">
-          <div className="sidebar__nav__link">
-            <img src={BookmarkIcon} alt="" className="icon" />
-            <span className="sidebar__nav__link__text">Bookmarks</span>
+          <div className={styles.link}>
+            <img src={BookmarkIcon} alt="" className={styles.icon} />
+            <span className={styles.linklabel}>Bookmarks</span>
           </div>
         </a>
         <a href="#">
-          <div className="sidebar__nav__link">
-            <img src={ListsIcon} alt="" className="icon" />
-            <span className="sidebar__nav__link__text">Lists</span>
+          <div className={styles.link}>
+            <img src={ListsIcon} alt="" className={styles.icon} />
+            <span className={styles.linklabel}>Lists</span>
           </div>
         </a>
         <a href="#">
-          <div className="sidebar__nav__link">
-            <img src={ProfileIcon} alt="" className="icon" />
-            <span className="sidebar__nav__link__text">Profile</span>
+          <div className={styles.link}>
+            <img src={ProfileIcon} alt="" className={styles.icon} />
+            <span className={styles.linklabel}>Profile</span>
           </div>
         </a>
         <a href="#">
-          <div className="sidebar__nav__link">
-            <img src={MoreIcon} alt="" className="icon" />
-            <span className="sidebar__nav__link__text">More</span>
+          <div className={styles.link}>
+            <img src={MoreIcon} alt="" className={styles.icon} />
+            <span className={styles.linklabel}>More</span>
           </div>
         </a>
       </nav>
