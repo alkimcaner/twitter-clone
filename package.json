@@ -1,7 +1,7 @@
 {
   "name": "twitter-clone",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.2.0",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -10,8 +10,7 @@
   "dependencies": {
     "firebase": "^9.8.1",
     "react": "^18.0.0",
-    "react-dom": "^18.0.0",
-    "react-twitter-embed": "^4.0.4"
+    "react-dom": "^18.0.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.0",
