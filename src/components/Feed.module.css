@@ -8,14 +8,6 @@
   overflow-x: hidden;
 }
 
-.home {
-  font-size: 22px;
-  font-weight: 500;
-  color: black;
-  text-decoration: none;
-  padding: 1rem;
-}
-
 @media screen and (max-width: 1600px) {
   .feed {
     grid-column: span 10;

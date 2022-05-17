@@ -1,9 +1,10 @@
-import { React, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./Feed.module.css";
-import Tweet from "./Tweet";
-import Tweetbox from "./Tweetbox";
 import { db } from "../firebase";
 import { collection, getDocs } from "firebase/firestore/lite";
+import Tweet from "./Tweet";
+import Tweetbox from "./Tweetbox";
+import PageTitle from "./PageTitle";
 
 const Feed = () => {
   const [tweets, setTweets] = useState([]);
@@ -20,9 +21,7 @@ const Feed = () => {
 
   return (
     <div className={styles.feed}>
-      <a href="#" className={styles.home}>
-        Home
-      </a>
+      <PageTitle name="Home" />
       <Tweetbox />
       {tweets.map((tweet) => (
         <Tweet key={Math.random()} tweet={tweet} />
