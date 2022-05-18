@@ -1,5 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import styles from "./Sidebar.module.css";
+import { UserContext } from "../App";
+import { auth } from "../firebase";
+import {
+  signInWithRedirect,
+  onAuthStateChanged,
+  signOut,
+  GoogleAuthProvider,
+} from "firebase/auth";
+
 import BookmarkIcon from "../assets/Icons/bookmark.svg";
 import ExploreIcon from "../assets/Icons/explore.svg";
 import HomeIcon from "../assets/Icons/home.svg";
@@ -11,6 +20,25 @@ import ProfileIcon from "../assets/Icons/profile.svg";
 import TwitterIcon from "../assets/Icons/twitter.svg";
 
 const Sidebar = () => {
+  const context = useContext(UserContext);
+
+  async function LoginGoogle() {
+    try {
+      const provider = new GoogleAuthProvider();
+      const user = await signInWithRedirect(auth, provider);
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  async function LogOut() {
+    await signOut(auth);
+  }
+
+  onAuthStateChanged(auth, (currentUser) => {
+    context.setUser(currentUser);
+  });
+
   return (
     <div className={styles.sidebar}>
       <a href="index.html">
@@ -65,6 +93,12 @@ const Sidebar = () => {
             <span className={styles.linklabel}>More</span>
           </div>
         </a>
+        {/* login button */}
+        {context.user ? (
+          <button onClick={LogOut}>Logout</button>
+        ) : (
+          <button onClick={LoginGoogle}>Login With Google</button>
+        )}
       </nav>
     </div>
   );

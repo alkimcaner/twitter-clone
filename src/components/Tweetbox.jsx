@@ -6,7 +6,7 @@ import MediaIcon from "../assets/Icons/media.svg";
 const Tweetbox = () => {
   return (
     <div className={styles.tweetbox}>
-      <img src={ProfileIcon} alt="" className="global__profileicon" />
+      <img src={ProfileIcon} alt="" className="profileicon" />
       <div className={styles.tweet}>
         <input
           type="text"
@@ -18,7 +18,7 @@ const Tweetbox = () => {
           <div className={styles.media}>
             <img src={MediaIcon} alt="" className={styles.mediaicon} />
           </div>
-          <button className="global__btn">Tweet</button>
+          <button className="btn">Tweet</button>
         </div>
       </div>
     </div>

@@ -5,7 +5,7 @@ import ProfileIcon from "../assets/Icons/avatar.svg";
 const Tweet = ({ tweet }) => {
   return (
     <div className={styles.tweet}>
-      <img src={ProfileIcon} alt="" className="global__profileicon" />
+      <img src={ProfileIcon} alt="" className="profileicon" />
       <div className={styles.content}>
         <div>
           <a href="#" className={styles.user}>
