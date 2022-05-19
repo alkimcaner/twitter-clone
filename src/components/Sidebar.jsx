@@ -22,7 +22,7 @@ import TwitterIcon from "../assets/Icons/twitter.svg";
 const Sidebar = () => {
   const context = useContext(UserContext);
 
-  async function LoginGoogle() {
+  async function loginGoogle() {
     try {
       const provider = new GoogleAuthProvider();
       const user = await signInWithRedirect(auth, provider);
@@ -31,7 +31,7 @@ const Sidebar = () => {
     }
   }
 
-  async function LogOut() {
+  async function logOut() {
     await signOut(auth);
   }
 
@@ -95,9 +95,9 @@ const Sidebar = () => {
         </a>
         {/* login button */}
         {context.user ? (
-          <button onClick={LogOut}>Logout</button>
+          <button onClick={logOut}>Logout</button>
         ) : (
-          <button onClick={LoginGoogle}>Login With Google</button>
+          <button onClick={loginGoogle}>Login With Google</button>
         )}
       </nav>
     </div>

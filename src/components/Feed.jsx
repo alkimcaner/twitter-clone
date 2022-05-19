@@ -1,28 +1,31 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import styles from "./Feed.module.css";
 import { db } from "../firebase";
-import { collection, getDocs } from "firebase/firestore/lite";
+import { collection, getDocs, query, orderBy } from "firebase/firestore/lite";
 import Tweet from "./Tweet";
 import Tweetbox from "./Tweetbox";
 import PageTitle from "./PageTitle";
+import { UserContext } from "../App";
 
 const Feed = () => {
   const [tweets, setTweets] = useState([]);
+  const context = useContext(UserContext);
 
-  async function fetchTweets() {
+  async function getTweets() {
     const tweetsCollection = collection(db, "tweets");
-    const tweetsSnapshot = await getDocs(tweetsCollection);
+    const orderedCollecion = query(tweetsCollection, orderBy("time", "desc"));
+    const tweetsSnapshot = await getDocs(orderedCollecion);
     setTweets(tweetsSnapshot.docs.map((doc) => doc.data()));
   }
 
   useEffect(() => {
-    fetchTweets();
+    getTweets();
   }, []);
 
   return (
     <div className={styles.feed}>
       <PageTitle name="Home" />
-      <Tweetbox />
+      {context.user ? <Tweetbox /> : null}
       {tweets.map((tweet) => (
         <Tweet key={Math.random()} tweet={tweet} />
       ))}

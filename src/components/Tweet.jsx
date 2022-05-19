@@ -1,11 +1,10 @@
 import React from "react";
 import styles from "./Tweet.module.css";
-import ProfileIcon from "../assets/Icons/avatar.svg";
 
 const Tweet = ({ tweet }) => {
   return (
     <div className={styles.tweet}>
-      <img src={ProfileIcon} alt="" className="profileicon" />
+      <img src={tweet.userPhoto} alt="profilePhoto" className="profileicon" />
       <div className={styles.content}>
         <div>
           <a href="#" className={styles.user}>
@@ -15,7 +14,7 @@ const Tweet = ({ tweet }) => {
         </div>
         {tweet.text}
         {tweet.image && (
-          <img src={tweet.image} alt="media" className={styles.image} />
+          <img src={tweet.image} alt="" className={styles.image} />
         )}
       </div>
     </div>

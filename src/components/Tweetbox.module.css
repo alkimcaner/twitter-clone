@@ -32,6 +32,7 @@
 
 .media {
   display: flex;
+  gap: 1rem;
 }
 
 .mediaicon:hover {
