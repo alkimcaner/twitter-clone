@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./Tweet.module.css";
+import TimeAgo from "react-timeago";
 
 const Tweet = ({ tweet }) => {
   return (
@@ -10,7 +11,10 @@ const Tweet = ({ tweet }) => {
           <a href="#" className={styles.user}>
             {tweet.username}
           </a>
-          <span className={styles.username}>@{tweet.username}</span>
+          <span className={styles.username}>
+            @{tweet.username} ·{" "}
+            <TimeAgo date={new Date(tweet.time.seconds * 1000)} />
+          </span>
         </div>
         {tweet.text}
         {tweet.image && (
