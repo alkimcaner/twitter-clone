@@ -16,7 +16,8 @@
   border: none;
   font-size: large;
   outline: none;
-  padding-bottom: 1rem;
+  resize: vertical;
+  font-family: inherit;
 }
 
 .input:focus {

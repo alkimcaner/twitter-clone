@@ -1,3 +1,11 @@
+.app {
+  display: grid;
+  grid-template-columns: repeat(16, 1fr);
+  max-width: 75vw;
+  height: 100vh;
+  margin: 0 auto;
+}
+
 .btn {
   background-color: rgb(88, 166, 255);
   color: white;
@@ -28,14 +36,6 @@
 .profileicon:hover {
   filter: brightness(0.8);
   cursor: pointer;
-}
-
-.app {
-  display: grid;
-  grid-template-columns: repeat(16, 1fr);
-  max-width: 65vw;
-  height: 100vh;
-  margin: 0 auto;
 }
 
 @media screen and (max-width: 1600px) {

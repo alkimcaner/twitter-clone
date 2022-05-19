@@ -1,0 +1,31 @@
+.link:hover {
+  cursor: pointer;
+}
+
+.linkhighlight {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  border-radius: 16rem;
+  font-size: 24px;
+  padding: 0.75rem 1rem;
+  user-select: none;
+  transition: background 0.2s;
+}
+
+.link:hover .linkhighlight {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.linklabel {
+  font-size: 20px;
+}
+
+@media screen and (max-width: 1600px) {
+  .linkhighlight {
+    padding: 1rem;
+  }
+  .linklabel {
+    display: none;
+  }
+}

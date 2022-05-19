@@ -3,7 +3,7 @@ import { UserContext } from "../App";
 import styles from "./Tweetbox.module.css";
 import { db } from "../firebase";
 import { collection, addDoc, Timestamp } from "firebase/firestore/lite";
-import MediaIcon from "../assets/Icons/media.svg";
+import { FaPhotoVideo } from "react-icons/fa";
 
 const Tweetbox = ({ getTweets }) => {
   const [showImageInput, setShowImageInput] = useState(false);
@@ -22,6 +22,7 @@ const Tweetbox = ({ getTweets }) => {
     const tweet = {
       username: context.user.displayName,
       userPhoto: context.user.photoURL,
+      uid: context.user.uid,
       text: TweetText.current?.value,
       image: ImageURL.current?.value || "",
       time: Timestamp.now().toDate(),
@@ -39,7 +40,7 @@ const Tweetbox = ({ getTweets }) => {
         className="profileicon"
       />
       <div className={styles.tweet}>
-        <input
+        <textarea
           type="text"
           placeholder="What's happening?"
           className={styles.input}
@@ -49,12 +50,9 @@ const Tweetbox = ({ getTweets }) => {
 
         <div className={styles.send}>
           <div className={styles.media}>
-            <img
-              src={MediaIcon}
-              alt=""
-              className={styles.mediaicon}
-              onClick={toggleImageInput}
-            />
+            <div className={styles.mediaicon} onClick={toggleImageInput}>
+              <FaPhotoVideo />
+            </div>
             {showImageInput ? (
               <input
                 type="url"

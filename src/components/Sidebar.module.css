@@ -2,48 +2,30 @@
   grid-column: span 3;
   display: flex;
   flex-direction: column;
+  gap: 0.5rem;
+  padding: 0 1rem;
 }
 
 .twittericon {
-  width: 2.5rem;
-  height: 2.5rem;
-  padding: 0.5rem;
   border-radius: 16rem;
   transition: background 0.2s;
+  color: rgb(88, 166, 255);
+  font-size: 32px;
+  line-height: 100%;
+  text-align: center;
+  width: 2rem;
+  padding: 0.75rem;
 }
 
 .twittericon:hover {
   background-color: rgba(0, 255, 255, 0.2);
+  cursor: pointer;
 }
 
 .nav {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-}
-
-.nav > a {
-  text-decoration: none;
-  color: black;
-  font-size: 20px;
-}
-
-.link {
-  padding: 0.8rem 1rem;
-  border-radius: 16rem;
-  transition: background 0.2s;
-  display: inline-flex;
-  align-items: center;
-}
-
-.nav > a:hover .link {
-  background-color: rgba(0, 0, 0, 0.1);
-}
-
-.icon {
-  width: 1.5rem;
-  height: 1.5rem;
-  margin-right: 1rem;
 }
 
 .login {
@@ -63,20 +45,9 @@
 }
 
 @media screen and (max-width: 1600px) {
-  .nav > a {
-    text-align: center;
-  }
-  .link {
-    padding: 0.5rem;
-  }
-  .linklabel {
-    display: none;
-  }
-  .icon {
-    margin-right: 0;
-  }
   .sidebar {
     grid-column: span 1;
     align-items: center;
+    padding: 0;
   }
 }
