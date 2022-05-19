@@ -12,9 +12,11 @@ const Feed = () => {
   const context = useContext(UserContext);
 
   async function getTweets() {
-    const tweetsCollection = collection(db, "tweets");
-    const orderedCollecion = query(tweetsCollection, orderBy("time", "desc"));
-    const tweetsSnapshot = await getDocs(orderedCollecion);
+    const tweetsCollecion = query(
+      collection(db, "tweets"),
+      orderBy("time", "desc")
+    );
+    const tweetsSnapshot = await getDocs(tweetsCollecion);
     setTweets(tweetsSnapshot.docs.map((doc) => doc.data()));
   }
 
@@ -25,7 +27,7 @@ const Feed = () => {
   return (
     <div className={styles.feed}>
       <PageTitle name="Home" />
-      {context.user ? <Tweetbox /> : null}
+      {context.user ? <Tweetbox getTweets={getTweets} /> : null}
       {tweets.map((tweet) => (
         <Tweet key={Math.random()} tweet={tweet} />
       ))}

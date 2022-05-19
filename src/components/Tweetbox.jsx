@@ -5,7 +5,7 @@ import { db } from "../firebase";
 import { collection, addDoc, Timestamp } from "firebase/firestore/lite";
 import MediaIcon from "../assets/Icons/media.svg";
 
-const Tweetbox = () => {
+const Tweetbox = ({ getTweets }) => {
   const [showImageInput, setShowImageInput] = useState(false);
   const context = useContext(UserContext);
   const ImageURL = useRef(null);
@@ -28,7 +28,7 @@ const Tweetbox = () => {
     };
 
     await addDoc(collection(db, "tweets"), tweet);
-    window.location.reload();
+    getTweets();
   }
 
   return (
