@@ -17,7 +17,8 @@ const Tweetbox = () => {
     });
   }
 
-  async function sendTweet() {
+  async function sendTweet(event) {
+    event.preventDefault();
     const tweet = {
       username: context.user.displayName,
       userPhoto: context.user.photoURL,
@@ -55,7 +56,12 @@ const Tweetbox = () => {
               onClick={toggleImageInput}
             />
             {showImageInput ? (
-              <input type="url" placeholder="Image URL" ref={ImageURL}></input>
+              <input
+                type="url"
+                placeholder="Image URL"
+                ref={ImageURL}
+                required
+              ></input>
             ) : null}
           </div>
           <input type="submit" className="btn" value="Tweet" />
