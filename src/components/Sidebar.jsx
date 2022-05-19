@@ -95,9 +95,13 @@ const Sidebar = () => {
         </a>
         {/* login button */}
         {context.user ? (
-          <button onClick={logOut}>Logout</button>
+          <button onClick={logOut} className={styles.login}>
+            Logout
+          </button>
         ) : (
-          <button onClick={loginGoogle}>Login With Google</button>
+          <button onClick={loginGoogle} className={styles.login}>
+            Login With Google
+          </button>
         )}
       </nav>
     </div>
