@@ -1,8 +1,32 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styles from "./Tweet.module.css";
 import TimeAgo from "react-timeago";
+import { FcLikePlaceholder, FcLike } from "react-icons/fc";
+import { UserContext } from "../App";
+import { doc, updateDoc } from "firebase/firestore/lite";
+import { db } from "../firebase";
 
-const Tweet = ({ tweet }) => {
+const Tweet = ({ tweet, getTweets }) => {
+  const context = useContext(UserContext);
+  const [like, setLike] = useState(false);
+
+  async function likeTweet() {
+    const tweetsRef = doc(db, "tweets", tweet.id);
+    if (like) {
+      await updateDoc(tweetsRef, {
+        likes: tweet.likes.filter((e) => e != context.user.uid),
+      });
+    } else {
+      await updateDoc(tweetsRef, { likes: [...tweet.likes, context.user.uid] });
+    }
+    setLike((currentValue) => !currentValue);
+    getTweets();
+  }
+
+  useEffect(() => {
+    setLike(tweet.likes?.includes(context.user.uid) ? true : false);
+  }, []);
+
   return (
     <div className={styles.tweet}>
       <img src={tweet.userPhoto} alt="profilePhoto" className="profileicon" />
@@ -20,6 +44,12 @@ const Tweet = ({ tweet }) => {
         {tweet.image && (
           <img src={tweet.image} alt="" className={styles.image} />
         )}
+        <div className={styles.interaction}>
+          <div className={styles.like} onClick={likeTweet}>
+            {like ? <FcLike /> : <FcLikePlaceholder />}
+            {tweet.likes?.length}
+          </div>
+        </div>
       </div>
     </div>
   );

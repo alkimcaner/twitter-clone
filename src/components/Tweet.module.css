@@ -37,6 +37,10 @@
   border-radius: 1rem;
 }
 
-.image:hover {
+.like {
+  display: inline;
+}
+
+.like:hover {
   cursor: pointer;
 }

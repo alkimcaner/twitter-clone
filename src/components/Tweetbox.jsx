@@ -26,10 +26,13 @@ const Tweetbox = ({ getTweets }) => {
       text: TweetText.current?.value,
       image: ImageURL.current?.value || "",
       time: Timestamp.now().toDate(),
+      likes: [],
     };
 
     await addDoc(collection(db, "tweets"), tweet);
     getTweets();
+    TweetText.current.value = "";
+    ImageURL.current.value = "";
   }
 
   return (

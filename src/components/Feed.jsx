@@ -17,7 +17,11 @@ const Feed = () => {
       orderBy("time", "desc")
     );
     const tweetsSnapshot = await getDocs(tweetsCollecion);
-    setTweets(tweetsSnapshot.docs.map((doc) => doc.data()));
+    setTweets(
+      tweetsSnapshot.docs.map((doc) => {
+        return { ...doc.data(), id: doc.id };
+      })
+    );
   }
 
   useEffect(() => {
@@ -29,7 +33,7 @@ const Feed = () => {
       <PageTitle name="Home" />
       {context.user ? <Tweetbox getTweets={getTweets} /> : null}
       {tweets.map((tweet) => (
-        <Tweet key={Math.random()} tweet={tweet} />
+        <Tweet key={Math.random()} tweet={tweet} getTweets={getTweets} />
       ))}
     </div>
   );
