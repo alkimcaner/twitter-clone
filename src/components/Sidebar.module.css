@@ -37,6 +37,9 @@
   font-size: 16px;
   font-weight: bold;
   transition: background 0.2s;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
 }
 
 .login:hover {
@@ -49,5 +52,8 @@
     grid-column: span 1;
     align-items: center;
     padding: 0;
+  }
+  .logintext {
+    display: none;
   }
 }

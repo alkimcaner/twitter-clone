@@ -19,6 +19,8 @@ import {
   FaFileAlt,
   FaRegUserCircle,
   FaEllipsisH,
+  FaGoogle,
+  FaSignOutAlt,
 } from "react-icons/fa";
 import SidebarLink from "./SidebarLink";
 
@@ -59,11 +61,13 @@ const Sidebar = () => {
         {/* login button */}
         {context.user ? (
           <button onClick={logOut} className={styles.login}>
-            Logout
+            <FaSignOutAlt />
+            <span className={styles.logintext}>Logout</span>
           </button>
         ) : (
           <button onClick={loginGoogle} className={styles.login}>
-            Login With Google
+            <FaGoogle />
+            <span className={styles.logintext}>Login With Google</span>
           </button>
         )}
       </nav>
