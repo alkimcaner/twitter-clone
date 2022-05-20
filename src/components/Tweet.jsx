@@ -14,17 +14,19 @@ const Tweet = ({ tweet, getTweets }) => {
     const tweetsRef = doc(db, "tweets", tweet.id);
     if (like) {
       await updateDoc(tweetsRef, {
-        likes: tweet.likes.filter((e) => e != context.user.uid),
+        likes: tweet.likes.filter((e) => e != context.user?.uid),
       });
     } else {
-      await updateDoc(tweetsRef, { likes: [...tweet.likes, context.user.uid] });
+      await updateDoc(tweetsRef, {
+        likes: [...tweet.likes, context.user?.uid],
+      });
     }
     setLike((currentValue) => !currentValue);
     getTweets();
   }
 
   useEffect(() => {
-    setLike(tweet.likes?.includes(context.user.uid) ? true : false);
+    setLike(tweet.likes?.includes(context.user?.uid) ? true : false);
   }, []);
 
   return (
@@ -45,10 +47,17 @@ const Tweet = ({ tweet, getTweets }) => {
           <img src={tweet.image} alt="" className={styles.image} />
         )}
         <div className={styles.interaction}>
-          <div className={styles.like} onClick={likeTweet}>
-            {like ? <FcLike /> : <FcLikePlaceholder />}
-            {tweet.likes?.length}
-          </div>
+          {context.user ? (
+            <div className={styles.like} onClick={likeTweet}>
+              {like ? <FcLike /> : <FcLikePlaceholder />}
+              {tweet.likes?.length}
+            </div>
+          ) : (
+            <div className={styles.like}>
+              <FcLike />
+              {tweet.likes?.length}
+            </div>
+          )}
         </div>
       </div>
     </div>
