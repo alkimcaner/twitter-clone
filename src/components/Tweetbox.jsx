@@ -12,13 +12,13 @@ const Tweetbox = ({ getTweets }) => {
   const TweetText = useRef(null);
 
   function toggleImageInput() {
-    setShowImageInput((currentValue) => {
-      return !currentValue;
-    });
+    setShowImageInput((currentValue) => !currentValue);
   }
 
   async function sendTweet(event) {
     event.preventDefault();
+    if (!context.user) return;
+
     const tweet = {
       username: context.user.displayName,
       userPhoto: context.user.photoURL,

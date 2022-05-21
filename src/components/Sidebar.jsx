@@ -3,10 +3,10 @@ import styles from "./Sidebar.module.css";
 import { UserContext } from "../App";
 import { auth } from "../firebase";
 import {
-  signInWithRedirect,
-  onAuthStateChanged,
-  signOut,
   GoogleAuthProvider,
+  signInWithRedirect,
+  signOut,
+  onAuthStateChanged,
 } from "firebase/auth";
 
 import {

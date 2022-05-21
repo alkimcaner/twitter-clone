@@ -37,6 +37,10 @@
   border-radius: 1rem;
 }
 
+.interaction {
+  user-select: none;
+}
+
 .like {
   display: inline;
 }

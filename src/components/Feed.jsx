@@ -33,7 +33,7 @@ const Feed = () => {
       <PageTitle name="Home" />
       {context.user ? <Tweetbox getTweets={getTweets} /> : null}
       {tweets.map((tweet) => (
-        <Tweet key={Math.random()} tweet={tweet} getTweets={getTweets} />
+        <Tweet key={Math.random()} tweet={tweet} />
       ))}
     </div>
   );

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import styles from "./Tweet.module.css";
 import TimeAgo from "react-timeago";
 import { FcLikePlaceholder, FcLike } from "react-icons/fc";
@@ -6,23 +6,29 @@ import { UserContext } from "../App";
 import { doc, updateDoc } from "firebase/firestore/lite";
 import { db } from "../firebase";
 
-const Tweet = ({ tweet, getTweets }) => {
+const Tweet = ({ tweet }) => {
   const context = useContext(UserContext);
   const [like, setLike] = useState(false);
+  const isStillLike = useRef(false);
 
   async function likeTweet() {
+    if (!context.user || isStillLike.current) return;
+
     const tweetsRef = doc(db, "tweets", tweet.id);
+    let newLikes = [];
+    isStillLike.current = true;
+
     if (like) {
-      await updateDoc(tweetsRef, {
-        likes: tweet.likes.filter((e) => e != context.user?.uid),
-      });
+      newLikes = tweet.likes.filter((e) => e != context.user?.uid);
+      await updateDoc(tweetsRef, { likes: newLikes });
     } else {
-      await updateDoc(tweetsRef, {
-        likes: [...tweet.likes, context.user?.uid],
-      });
+      newLikes = [...tweet.likes, context.user?.uid];
+      await updateDoc(tweetsRef, { likes: newLikes });
     }
+
+    isStillLike.current = false;
+    tweet.likes = newLikes;
     setLike((currentValue) => !currentValue);
-    getTweets();
   }
 
   useEffect(() => {
