@@ -12,16 +12,20 @@ const Feed = () => {
   const context = useContext(UserContext);
 
   async function getTweets() {
-    const tweetsCollecion = query(
-      collection(db, "tweets"),
-      orderBy("time", "desc")
-    );
-    const tweetsSnapshot = await getDocs(tweetsCollecion);
-    setTweets(
-      tweetsSnapshot.docs.map((doc) => {
-        return { ...doc.data(), id: doc.id };
-      })
-    );
+    try {
+      const tweetsCollection = query(
+        collection(db, "tweets"),
+        orderBy("time", "desc")
+      );
+      const tweetsSnapshot = await getDocs(tweetsCollection);
+      setTweets(
+        tweetsSnapshot.docs.map((doc) => {
+          return { ...doc.data(), id: doc.id };
+        })
+      );
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   useEffect(() => {

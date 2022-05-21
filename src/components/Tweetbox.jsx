@@ -8,8 +8,8 @@ import { FaPhotoVideo } from "react-icons/fa";
 const Tweetbox = ({ getTweets }) => {
   const [showImageInput, setShowImageInput] = useState(false);
   const context = useContext(UserContext);
-  const ImageURL = useRef(null);
   const TweetText = useRef(null);
+  const ImageURL = useRef(null);
 
   function toggleImageInput() {
     setShowImageInput((currentValue) => !currentValue);
@@ -29,10 +29,14 @@ const Tweetbox = ({ getTweets }) => {
       likes: [],
     };
 
-    await addDoc(collection(db, "tweets"), tweet);
-    getTweets();
-    TweetText.current.value = "";
-    ImageURL.current.value = "";
+    try {
+      await addDoc(collection(db, "tweets"), tweet);
+      getTweets();
+      TweetText.current.value = "";
+      ImageURL.current.value = "";
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   return (

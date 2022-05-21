@@ -31,13 +31,17 @@ const Sidebar = () => {
     try {
       const provider = new GoogleAuthProvider();
       const user = await signInWithRedirect(auth, provider);
-    } catch (err) {
-      console.log(err);
+    } catch (error) {
+      console.log(error);
     }
   }
 
   async function logOut() {
-    await signOut(auth);
+    try {
+      await signOut(auth);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   onAuthStateChanged(auth, (currentUser) => {

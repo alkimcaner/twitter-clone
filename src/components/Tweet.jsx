@@ -13,22 +13,27 @@ const Tweet = ({ tweet }) => {
 
   async function likeTweet() {
     if (!context.user || isStillLike.current) return;
-
-    const tweetsRef = doc(db, "tweets", tweet.id);
-    let newLikes = [];
     isStillLike.current = true;
 
-    if (like) {
-      newLikes = tweet.likes.filter((e) => e != context.user?.uid);
-      await updateDoc(tweetsRef, { likes: newLikes });
-    } else {
-      newLikes = [...tweet.likes, context.user?.uid];
-      await updateDoc(tweetsRef, { likes: newLikes });
+    try {
+      const tweetsRef = doc(db, "tweets", tweet.id);
+      let newLikes = [];
+
+      if (like) {
+        newLikes = tweet.likes.filter((e) => e != context.user?.uid);
+        await updateDoc(tweetsRef, { likes: newLikes });
+      } else {
+        newLikes = [...tweet.likes, context.user?.uid];
+        await updateDoc(tweetsRef, { likes: newLikes });
+      }
+
+      tweet.likes = newLikes;
+      setLike((currentValue) => !currentValue);
+    } catch (error) {
+      console.log(error);
     }
 
     isStillLike.current = false;
-    tweet.likes = newLikes;
-    setLike((currentValue) => !currentValue);
   }
 
   useEffect(() => {
