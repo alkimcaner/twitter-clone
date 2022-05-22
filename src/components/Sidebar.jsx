@@ -29,9 +29,7 @@ const Sidebar = () => {
   const context = useContext(UserContext);
 
   function toggleDark() {
-    context.setDark((currentValue) => {
-      return !currentValue;
-    });
+    context.setDark((currentValue) => !currentValue);
   }
 
   async function loginGoogle() {

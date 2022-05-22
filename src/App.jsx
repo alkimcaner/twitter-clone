@@ -1,5 +1,5 @@
 import "./App.css";
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState, useLayoutEffect } from "react";
 import Sidebar from "./components/Sidebar";
 import Feed from "./components/Feed";
 import Widget from "./components/Widget";
@@ -8,9 +8,12 @@ export const UserContext = createContext();
 
 function App() {
   const [user, setUser] = useState({});
-  const [dark, setDark] = useState(false);
+  const [dark, setDark] = useState(
+    JSON.parse(localStorage.getItem("dark")) ?? false
+  );
 
-  useEffect(() => {
+  useLayoutEffect(() => {
+    localStorage.setItem("dark", dark);
     if (dark) {
       document.body.classList.remove("light");
       document.body.classList.add("dark");
