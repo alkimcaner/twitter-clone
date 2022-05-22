@@ -11,12 +11,13 @@
 }
 
 .input {
-  border: none;
+  border: 1px solid grey;
   border-radius: 16rem;
-  background-color: rgb(245, 245, 245);
-  color: rgb(20, 20, 20);
+  color: rgb(var(--textcolor));
+  background-color: rgb(var(--bgcolor));
   padding: 1rem;
   flex: 1;
+  transition: background 0.2s;
 }
 
 .input:focus {

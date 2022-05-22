@@ -7,7 +7,7 @@
 }
 
 .tweet:hover {
-  background-color: rgba(0, 0, 0, 0.05);
+  background-color: rgb(var(--textcolor), 0.05);
 }
 
 .content {
@@ -17,7 +17,7 @@
 }
 
 .user {
-  color: black;
+  color: rgb(var(--textcolor), 1);
   font-weight: 600;
   text-decoration: none;
 }

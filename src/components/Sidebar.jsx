@@ -22,10 +22,17 @@ import {
   FaGoogle,
   FaSignOutAlt,
 } from "react-icons/fa";
+import { MdDarkMode, MdLightMode } from "react-icons/md";
 import SidebarLink from "./SidebarLink";
 
 const Sidebar = () => {
   const context = useContext(UserContext);
+
+  function toggleDark() {
+    context.setDark((currentValue) => {
+      return !currentValue;
+    });
+  }
 
   async function loginGoogle() {
     try {
@@ -45,7 +52,7 @@ const Sidebar = () => {
   }
 
   onAuthStateChanged(auth, (currentUser) => {
-    context.setUser(currentUser);
+    context?.setUser(currentUser);
   });
 
   return (
@@ -63,7 +70,7 @@ const Sidebar = () => {
         <SidebarLink Link="Profile" Icon={FaRegUserCircle} />
         <SidebarLink Link="More" Icon={FaEllipsisH} />
         {/* login button */}
-        {context.user ? (
+        {context?.user ? (
           <button onClick={logOut} className={styles.login}>
             <FaSignOutAlt />
             <span className={styles.logintext}>Logout</span>
@@ -75,6 +82,12 @@ const Sidebar = () => {
           </button>
         )}
       </nav>
+      {/* dark mode */}
+      <div>
+        <button onClick={toggleDark} className={styles.toggleDark}>
+          {context.dark ? <MdLightMode /> : <MdDarkMode />}
+        </button>
+      </div>
     </div>
   );
 };

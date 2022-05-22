@@ -18,6 +18,9 @@
   outline: none;
   resize: vertical;
   font-family: inherit;
+  color: rgb(var(--textcolor), 1);
+  background-color: rgb(var(--bgcolor), 1);
+  transition: background 0.2s;
 }
 
 .input:focus {

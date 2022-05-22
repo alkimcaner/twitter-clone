@@ -1,7 +1,11 @@
 .home {
   font-size: 22px;
   font-weight: 500;
-  color: black;
+  color: rgb(var(--textcolor));
+  background-color: rgb(var(--bgcolor));
   text-decoration: none;
   padding: 1rem;
+  position: sticky;
+  top: 0;
+  transition: background 0.2s;
 }

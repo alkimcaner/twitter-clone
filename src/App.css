@@ -1,3 +1,19 @@
+.light {
+  --textcolor: 0, 0, 0;
+  --bgcolor: 255, 255, 255;
+}
+
+.dark {
+  --textcolor: 255, 255, 255;
+  --bgcolor: 0, 0, 0;
+}
+
+body {
+  color: rgb(var(--textcolor), 1);
+  background-color: rgb(var(--bgcolor));
+  transition: background 0.2s;
+}
+
 .app {
   display: grid;
   grid-template-columns: repeat(16, 1fr);
