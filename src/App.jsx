@@ -1,12 +1,13 @@
 import "./App.css";
 import { createContext, useState, useLayoutEffect } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Sidebar from "./components/Sidebar";
 import Feed from "./pages/Feed";
 import Profile from "./pages/Profile";
 import Widget from "./components/Widget";
 import UserTweets from "./components/UserTweets";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import UserLikes from "./components/UserLikes";
+import Bookmarks from "./pages/Bookmarks";
 
 export const UserContext = createContext();
 
@@ -37,6 +38,7 @@ function App() {
           <div className="middle">
             <Routes>
               <Route path="/" element={<Feed />} />
+              <Route path="bookmarks" element={<Bookmarks />} />
               <Route path="user">
                 <Route path=":id" element={<Profile />}>
                   <Route path="tweets" element={<UserTweets />} />

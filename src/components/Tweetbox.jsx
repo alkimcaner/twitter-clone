@@ -27,6 +27,7 @@ const Tweetbox = ({ getTweets }) => {
       image: ImageURL.current?.value || "",
       time: Timestamp.now().toDate(),
       likes: [],
+      bookmarks: [],
     };
 
     try {

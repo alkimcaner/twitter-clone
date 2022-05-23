@@ -2,7 +2,7 @@
   color: rgb(var(--textcolor));
   background-color: rgb(var(--bgcolor), 0.9);
   backdrop-filter: blur(16px);
-  padding: 0.5rem 1rem;
+  padding: 0rem 1rem;
   position: sticky;
   top: 0;
   display: flex;
@@ -21,10 +21,11 @@
   line-height: 0%;
   text-decoration: none;
   color: rgb(var(--textcolor));
+  padding: 2rem 0rem;
 }
 
 .back {
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 500;
   line-height: 0%;
   text-decoration: none;

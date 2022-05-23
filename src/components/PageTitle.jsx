@@ -3,13 +3,16 @@ import styles from "./PageTitle.module.css";
 import { Link } from "react-router-dom";
 import { IoArrowBack } from "react-icons/io5";
 
-const PageTitle = ({ Page }) => {
+const PageTitle = ({ page, back }) => {
   return (
     <div className={styles.titlebar}>
-      <Link to={-1} className={styles.back}>
-        <IoArrowBack />
-      </Link>
-      <div className={styles.title}>{Page}</div>
+      {back ? (
+        <Link to={-1} className={styles.back}>
+          <IoArrowBack />
+        </Link>
+      ) : null}
+
+      <div className={styles.title}>{page}</div>
     </div>
   );
 };

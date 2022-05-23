@@ -1,8 +1,6 @@
 .profile {
   display: flex;
   flex-direction: column;
-  border-left: 1px solid rgb(var(--textcolor), 0.1);
-  border-right: 1px solid rgb(var(--textcolor), 0.1);
 }
 
 .banner {
@@ -32,6 +30,11 @@
 .name {
   font-size: x-large;
   font-weight: bold;
+}
+
+.username {
+  font-weight: lighter;
+  color: rgb(var(--textcolor), 0.5);
 }
 
 .createdAt {

@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import styles from "./Sidebar.module.css";
 import { UserContext } from "../App";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { setDoc, doc } from "firebase/firestore/lite";
 import { db } from "../firebase";
 import { auth } from "../firebase";
@@ -30,6 +30,7 @@ import SidebarLink from "./SidebarLink";
 
 const Sidebar = () => {
   const context = useContext(UserContext);
+  const navigate = useNavigate();
 
   function toggleDark() {
     context?.setDark((currentValue) => !currentValue);
@@ -47,6 +48,7 @@ const Sidebar = () => {
   async function logOut() {
     try {
       await signOut(auth);
+      navigate("/", { replace: true });
     } catch (error) {
       console.log(error);
     }

@@ -22,7 +22,6 @@ const UserLikes = () => {
         .sort((a, b) => (a.time < b.time ? 1 : -1));
 
       setTweets(sortedTweets);
-      console.log(sortedTweets);
     } catch (error) {
       console.log(error);
     }

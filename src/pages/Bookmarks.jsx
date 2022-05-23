@@ -1,18 +1,20 @@
-import React, { useState, useEffect } from "react";
-import { getDocs, collection, where, query } from "firebase/firestore/lite";
+import React, { useState, useContext, useEffect } from "react";
+import styles from "./Bookmarks.module.css";
+import { UserContext } from "../App";
+import PageTitle from "../components/PageTitle";
+import { collection, query, where, getDocs } from "firebase/firestore/lite";
 import { db } from "../firebase";
-import { useParams } from "react-router-dom";
 import Tweet from "../components/Tweet";
 
-const UserTweets = () => {
-  const params = useParams();
+const Bookmarks = () => {
+  const context = useContext(UserContext);
   const [tweets, setTweets] = useState([]);
 
   async function getTweets() {
     try {
       const tweetsCollection = query(
         collection(db, "tweets"),
-        where("uid", "==", params.id)
+        where("bookmarks", "array-contains", context?.user?.uid || "")
       );
       const tweetsSnapshot = await getDocs(tweetsCollection);
       const sortedTweets = tweetsSnapshot.docs
@@ -29,10 +31,11 @@ const UserTweets = () => {
 
   useEffect(() => {
     getTweets();
-  }, [params.id]);
+  }, [context.user]);
 
   return (
-    <div>
+    <div className={styles.bookmarks}>
+      <PageTitle page="Bookmarks" back={false} />
       {tweets.map((tweet) => (
         <Tweet key={Math.random()} tweet={tweet} />
       ))}
@@ -40,4 +43,4 @@ const UserTweets = () => {
   );
 };
 
-export default UserTweets;
+export default Bookmarks;

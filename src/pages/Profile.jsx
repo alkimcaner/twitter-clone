@@ -29,7 +29,7 @@ const Profile = () => {
     <div className={styles.profile}>
       {profile ? (
         <>
-          <PageTitle Page={profile.name} />
+          <PageTitle page={profile.name} back={true} />
           <div className={styles.banner}>
             <img
               src={profile.userPhoto}
@@ -38,7 +38,12 @@ const Profile = () => {
             />
           </div>
           <div className={styles.info}>
-            <div className={styles.name}>{profile.name}</div>
+            <div>
+              <div className={styles.name}>{profile.name}</div>
+              <span className={styles.username}>
+                @{profile.name?.toLowerCase().replace(/\s+/g, "")}
+              </span>
+            </div>
             <div className={styles.createdAt}>
               <FaCalendarAlt /> Joined{" "}
               {new Date(parseInt(profile.createdAt)).toDateString()}
