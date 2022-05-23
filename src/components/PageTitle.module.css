@@ -1,11 +1,37 @@
-.home {
-  font-size: 22px;
-  font-weight: 500;
+.titlebar {
   color: rgb(var(--textcolor));
-  background-color: rgb(var(--bgcolor));
-  text-decoration: none;
-  padding: 1rem;
+  background-color: rgb(var(--bgcolor), 0.9);
+  backdrop-filter: blur(16px);
+  padding: 0.5rem 1rem;
   position: sticky;
   top: 0;
-  transition: background 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.titlebar:hover {
+  cursor: pointer;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 0%;
+  text-decoration: none;
+  color: rgb(var(--textcolor));
+}
+
+.back {
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 0%;
+  text-decoration: none;
+  color: rgb(var(--textcolor));
+  border-radius: 16rem;
+  padding: 0.5rem;
+}
+
+.back:hover {
+  background-color: rgb(var(--textcolor), 0.1);
 }

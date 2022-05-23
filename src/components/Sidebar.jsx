@@ -1,6 +1,9 @@
 import React, { useContext } from "react";
 import styles from "./Sidebar.module.css";
 import { UserContext } from "../App";
+import { Link } from "react-router-dom";
+import { setDoc, doc } from "firebase/firestore/lite";
+import { db } from "../firebase";
 import { auth } from "../firebase";
 import {
   GoogleAuthProvider,
@@ -29,7 +32,7 @@ const Sidebar = () => {
   const context = useContext(UserContext);
 
   function toggleDark() {
-    context.setDark((currentValue) => !currentValue);
+    context?.setDark((currentValue) => !currentValue);
   }
 
   async function loginGoogle() {
@@ -49,24 +52,55 @@ const Sidebar = () => {
     }
   }
 
-  onAuthStateChanged(auth, (currentUser) => {
+  onAuthStateChanged(auth, async (currentUser) => {
+    try {
+      if (currentUser) {
+        const userDocRef = doc(db, "users", currentUser.uid);
+        await setDoc(userDocRef, {
+          uid: currentUser.uid,
+          name: currentUser.displayName,
+          userPhoto: currentUser.photoURL,
+          email: currentUser.email,
+          createdAt: currentUser.metadata.createdAt,
+          lastLogin: currentUser.metadata.lastLoginAt,
+        });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+
     context?.setUser(currentUser);
   });
 
   return (
     <div className={styles.sidebar}>
-      <div className={styles.twittericon}>
-        <FaTwitter />
-      </div>
+      <Link to="/">
+        <div className={styles.twittericon}>
+          <FaTwitter />
+        </div>
+      </Link>
       <nav className={styles.nav}>
-        <SidebarLink Link="Home" Icon={FaHouseUser} />
-        <SidebarLink Link="Explore" Icon={FaHashtag} />
-        <SidebarLink Link="Notifications" Icon={FaBell} />
-        <SidebarLink Link="Messages" Icon={FaEnvelope} />
-        <SidebarLink Link="Bookmarks" Icon={FaBookmark} />
-        <SidebarLink Link="Lists" Icon={FaFileAlt} />
-        <SidebarLink Link="Profile" Icon={FaRegUserCircle} />
-        <SidebarLink Link="More" Icon={FaEllipsisH} />
+        <SidebarLink Path="/" Page="Home" Icon={FaHouseUser} />
+        {context?.user ? (
+          <>
+            <SidebarLink Path="/explore" Page="Explore" Icon={FaHashtag} />
+            <SidebarLink
+              Path="/notifications"
+              Page="Notifications"
+              Icon={FaBell}
+            />
+            <SidebarLink Path="/messages" Page="Messages" Icon={FaEnvelope} />
+            <SidebarLink Path="/bookmarks" Page="Bookmarks" Icon={FaBookmark} />
+            <SidebarLink Path="/lists" Page="Lists" Icon={FaFileAlt} />
+            <SidebarLink
+              Path={`/user/${context?.user?.uid}`}
+              Page="Profile"
+              Icon={FaRegUserCircle}
+            />
+          </>
+        ) : null}
+
+        <SidebarLink Path="" Page="More" Icon={FaEllipsisH} />
         {/* login button */}
         {context?.user ? (
           <button onClick={logOut} className={styles.login}>
@@ -83,7 +117,7 @@ const Sidebar = () => {
       {/* dark mode */}
       <div>
         <button onClick={toggleDark} className={styles.toggleDark}>
-          {context.dark ? <MdLightMode /> : <MdDarkMode />}
+          {context?.dark ? <MdLightMode /> : <MdDarkMode />}
         </button>
       </div>
     </div>

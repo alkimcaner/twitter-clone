@@ -5,6 +5,7 @@ import { FcLikePlaceholder, FcLike } from "react-icons/fc";
 import { UserContext } from "../App";
 import { doc, updateDoc } from "firebase/firestore/lite";
 import { db } from "../firebase";
+import { Link } from "react-router-dom";
 
 const Tweet = ({ tweet }) => {
   const context = useContext(UserContext);
@@ -12,7 +13,7 @@ const Tweet = ({ tweet }) => {
   const isStillLike = useRef(false);
 
   async function likeTweet() {
-    if (!context.user || isStillLike.current) return;
+    if (!context?.user || isStillLike.current) return;
     isStillLike.current = true;
 
     try {
@@ -20,10 +21,10 @@ const Tweet = ({ tweet }) => {
       let newLikes = [];
 
       if (like) {
-        newLikes = tweet.likes.filter((e) => e != context.user?.uid);
+        newLikes = tweet.likes.filter((e) => e != context?.user?.uid);
         await updateDoc(tweetsRef, { likes: newLikes });
       } else {
-        newLikes = [...tweet.likes, context.user?.uid];
+        newLikes = [...tweet.likes, context?.user?.uid];
         await updateDoc(tweetsRef, { likes: newLikes });
       }
 
@@ -37,20 +38,24 @@ const Tweet = ({ tweet }) => {
   }
 
   useEffect(() => {
-    setLike(tweet.likes?.includes(context.user?.uid) ? true : false);
+    setLike(tweet.likes?.includes(context?.user?.uid) ? true : false);
   }, []);
 
   return (
     <div className={styles.tweet}>
-      <img src={tweet.userPhoto} alt="profilePhoto" className="profileicon" />
+      <div>
+        <Link to={`/user/${tweet.uid}`}>
+          <img src={tweet.userPhoto} alt="avatar" className="profileicon" />
+        </Link>
+      </div>
+
       <div className={styles.content}>
         <div>
-          <a href="#" className={styles.user}>
-            {tweet.username}
-          </a>
+          <Link to={`/user/${tweet.uid}`} className={styles.user}>
+            {tweet.name}
+          </Link>
           <span className={styles.username}>
-            @{tweet.username} ·{" "}
-            <TimeAgo date={new Date(tweet.time.seconds * 1000)} />
+            @{tweet.name} · <TimeAgo date={tweet.time.seconds * 1000} />
           </span>
         </div>
         {tweet.text}
@@ -58,7 +63,7 @@ const Tweet = ({ tweet }) => {
           <img src={tweet.image} alt="" className={styles.image} />
         )}
         <div className={styles.interaction}>
-          {context.user ? (
+          {context?.user ? (
             <div className={styles.like} onClick={likeTweet}>
               {like ? <FcLike /> : <FcLikePlaceholder />}
               {tweet.likes?.length}

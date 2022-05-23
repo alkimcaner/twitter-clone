@@ -17,12 +17,12 @@ const Tweetbox = ({ getTweets }) => {
 
   async function sendTweet(event) {
     event.preventDefault();
-    if (!context.user) return;
+    if (!context?.user) return;
 
     const tweet = {
-      username: context.user.displayName,
-      userPhoto: context.user.photoURL,
-      uid: context.user.uid,
+      uid: context?.user.uid,
+      name: context?.user.displayName,
+      userPhoto: context?.user.photoURL,
       text: TweetText.current?.value,
       image: ImageURL.current?.value || "",
       time: Timestamp.now().toDate(),
@@ -41,11 +41,7 @@ const Tweetbox = ({ getTweets }) => {
 
   return (
     <form className={styles.tweetbox} onSubmit={sendTweet}>
-      <img
-        src={context.user.photoURL}
-        alt="profilePhoto"
-        className="profileicon"
-      />
+      <img src={context?.user.photoURL} alt="avatar" className="profileicon" />
       <div className={styles.tweet}>
         <textarea
           type="text"
@@ -69,7 +65,7 @@ const Tweetbox = ({ getTweets }) => {
               ></input>
             ) : null}
           </div>
-          <input type="submit" className="btn" value="Tweet" />
+          <input type="submit" className={styles.btn} value="Tweet" />
         </div>
       </div>
     </form>

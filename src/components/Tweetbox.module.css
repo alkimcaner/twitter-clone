@@ -1,6 +1,6 @@
 .tweetbox {
   display: flex;
-  border-bottom: 1px solid rgb(230, 230, 230);
+  border-bottom: 1px solid rgb(var(--textcolor), 0.1);
   padding: 0 1rem;
 }
 
@@ -20,11 +20,12 @@
   font-family: inherit;
   color: rgb(var(--textcolor), 1);
   background-color: rgb(var(--bgcolor), 1);
-  transition: background 0.2s;
+  min-height: 4rem;
+  max-height: 24rem;
 }
 
 .input:focus {
-  border-bottom: 1px solid rgb(230, 230, 230);
+  border-bottom: 1px solid rgb(var(--textcolor), 0.1);
 }
 
 .send {
@@ -41,4 +42,24 @@
 
 .mediaicon:hover {
   cursor: pointer;
+}
+
+.btn {
+  background-color: #1da1f2;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 16rem;
+  font-size: 16px;
+  font-weight: bold;
+  transition: background 0.2s;
+}
+
+.btn:hover {
+  background-color: #0e86d1;
+  cursor: pointer;
+}
+
+.btn:disabled {
+  cursor: not-allowed;
 }

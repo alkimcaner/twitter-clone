@@ -1,0 +1,6 @@
+.feed {
+  display: flex;
+  flex-direction: column;
+  border-left: 1px solid rgb(var(--textcolor), 0.1);
+  border-right: 1px solid rgb(var(--textcolor), 0.1);
+}

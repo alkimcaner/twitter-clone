@@ -2,7 +2,7 @@
   display: flex;
   gap: 1rem;
   padding: 1rem;
-  border-bottom: 1px solid rgb(230, 230, 230);
+  border-bottom: 1px solid rgb(var(--textcolor), 0.1);
   transition: background 0.2s;
 }
 

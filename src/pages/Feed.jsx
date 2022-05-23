@@ -2,9 +2,9 @@ import React, { useState, useEffect, useContext } from "react";
 import styles from "./Feed.module.css";
 import { db } from "../firebase";
 import { collection, getDocs, query, orderBy } from "firebase/firestore/lite";
-import Tweet from "./Tweet";
-import Tweetbox from "./Tweetbox";
-import PageTitle from "./PageTitle";
+import Tweet from "../components/Tweet";
+import Tweetbox from "../components/Tweetbox";
+import PageTitle from "../components/PageTitle";
 import { UserContext } from "../App";
 
 const Feed = () => {
@@ -34,8 +34,8 @@ const Feed = () => {
 
   return (
     <div className={styles.feed}>
-      <PageTitle name="Home" />
-      {context.user ? <Tweetbox getTweets={getTweets} /> : null}
+      <PageTitle Page="Home" />
+      {context?.user ? <Tweetbox getTweets={getTweets} /> : null}
       {tweets.map((tweet) => (
         <Tweet key={Math.random()} tweet={tweet} />
       ))}
