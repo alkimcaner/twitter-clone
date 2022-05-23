@@ -43,3 +43,27 @@
   color: rgb(var(--textcolor), 0.5);
   font-weight: lighter;
 }
+
+.menu {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-bottom: 1px solid rgb(var(--textcolor), 0.1);
+}
+
+.menulink {
+  color: rgb(var(--textcolor));
+  font-weight: 600;
+  font-size: large;
+  text-decoration: none;
+  flex: 1;
+  text-align: center;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menulink:hover {
+  background-color: rgb(var(--textcolor), 0.1);
+}

@@ -4,7 +4,9 @@ import Sidebar from "./components/Sidebar";
 import Feed from "./pages/Feed";
 import Profile from "./pages/Profile";
 import Widget from "./components/Widget";
+import UserTweets from "./components/UserTweets";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import UserLikes from "./components/UserLikes";
 
 export const UserContext = createContext();
 
@@ -35,7 +37,12 @@ function App() {
           <div className="middle">
             <Routes>
               <Route path="/" element={<Feed />} />
-              <Route path="/user/:id" element={<Profile />} />
+              <Route path="user">
+                <Route path=":id" element={<Profile />}>
+                  <Route path="tweets" element={<UserTweets />} />
+                  <Route path="likes" element={<UserLikes />} />
+                </Route>
+              </Route>
               <Route path="*" element={<div>Work in progress</div>} />
             </Routes>
           </div>

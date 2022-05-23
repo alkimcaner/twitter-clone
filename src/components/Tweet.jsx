@@ -44,14 +44,14 @@ const Tweet = ({ tweet }) => {
   return (
     <div className={styles.tweet}>
       <div>
-        <Link to={`/user/${tweet.uid}`}>
+        <Link to={`/user/${tweet.uid}/tweets`}>
           <img src={tweet.userPhoto} alt="avatar" className="profileicon" />
         </Link>
       </div>
 
       <div className={styles.content}>
         <div>
-          <Link to={`/user/${tweet.uid}`} className={styles.user}>
+          <Link to={`/user/${tweet.uid}/tweets`} className={styles.user}>
             {tweet.name}
           </Link>
           <span className={styles.username}>

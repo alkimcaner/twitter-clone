@@ -8,6 +8,7 @@
   display: flex;
   align-items: center;
   gap: 1rem;
+  z-index: 10;
 }
 
 .titlebar:hover {

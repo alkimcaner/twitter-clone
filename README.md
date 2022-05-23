@@ -5,6 +5,7 @@
 ## Used Technologies
 
 - React
+- React Router
 - Vite
 - Firebase
 

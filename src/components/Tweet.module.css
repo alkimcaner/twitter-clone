@@ -17,7 +17,7 @@
 }
 
 .user {
-  color: rgb(var(--textcolor), 1);
+  color: rgb(var(--textcolor));
   font-weight: 600;
   text-decoration: none;
 }

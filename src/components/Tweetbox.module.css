@@ -63,3 +63,9 @@
 .btn:disabled {
   cursor: not-allowed;
 }
+
+@media screen and (max-width: 800px) {
+  .imageinput {
+    width: 6rem;
+  }
+}

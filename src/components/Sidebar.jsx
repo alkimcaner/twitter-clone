@@ -60,7 +60,6 @@ const Sidebar = () => {
           uid: currentUser.uid,
           name: currentUser.displayName,
           userPhoto: currentUser.photoURL,
-          email: currentUser.email,
           createdAt: currentUser.metadata.createdAt,
           lastLogin: currentUser.metadata.lastLoginAt,
         });
@@ -93,7 +92,7 @@ const Sidebar = () => {
             <SidebarLink Path="/bookmarks" Page="Bookmarks" Icon={FaBookmark} />
             <SidebarLink Path="/lists" Page="Lists" Icon={FaFileAlt} />
             <SidebarLink
-              Path={`/user/${context?.user?.uid}`}
+              Path={`/user/${context?.user?.uid}/tweets`}
               Page="Profile"
               Icon={FaRegUserCircle}
             />

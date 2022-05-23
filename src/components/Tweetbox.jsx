@@ -60,6 +60,7 @@ const Tweetbox = ({ getTweets }) => {
               <input
                 type="url"
                 placeholder="Image URL"
+                className={styles.imageinput}
                 ref={ImageURL}
                 required
               ></input>
