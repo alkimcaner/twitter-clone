@@ -4,10 +4,12 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Sidebar from "./components/Sidebar";
 import Feed from "./pages/Feed";
 import Profile from "./pages/Profile";
+import Bookmarks from "./pages/Bookmarks";
+import Search from "./pages/Search";
 import Widget from "./components/Widget";
 import UserTweets from "./components/UserTweets";
 import UserLikes from "./components/UserLikes";
-import Bookmarks from "./pages/Bookmarks";
+import PageTitle from "./components/PageTitle";
 
 export const UserContext = createContext();
 
@@ -38,14 +40,29 @@ function App() {
           <div className="middle">
             <Routes>
               <Route path="/" element={<Feed />} />
+              <Route
+                path="explore"
+                element={<PageTitle page="Explore" back={false} />}
+              />
+              <Route
+                path="notifications"
+                element={<PageTitle page="Notifications" back={false} />}
+              />
+              <Route
+                path="messages"
+                element={<PageTitle page="Messages" back={false} />}
+              />
               <Route path="bookmarks" element={<Bookmarks />} />
-              <Route path="user">
-                <Route path=":id" element={<Profile />}>
-                  <Route path="tweets" element={<UserTweets />} />
-                  <Route path="likes" element={<UserLikes />} />
-                </Route>
+              <Route
+                path="lists"
+                element={<PageTitle page="Lists" back={false} />}
+              />
+              <Route path="user/:id" element={<Profile />}>
+                <Route index element={<UserTweets />} />
+                <Route path="likes" element={<UserLikes />} />
               </Route>
-              <Route path="*" element={<div>Work in progress</div>} />
+              <Route path="search" element={<Search />} />
+              <Route path="*" element={<div>Invalid page</div>} />
             </Routes>
           </div>
           <div className="right">

@@ -34,7 +34,7 @@ const Tweetbox = ({ getTweets }) => {
       await addDoc(collection(db, "tweets"), tweet);
       getTweets();
       TweetText.current.value = "";
-      ImageURL.current.value = "";
+      if (ImageURL.current) ImageURL.current.value = "";
     } catch (error) {
       console.log(error);
     }

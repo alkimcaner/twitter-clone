@@ -81,27 +81,27 @@ const Sidebar = () => {
         </div>
       </Link>
       <nav className={styles.nav}>
-        <SidebarLink Path="/" Page="Home" Icon={FaHouseUser} />
+        <SidebarLink path="/" page="Home" Icon={FaHouseUser} />
         {context?.user ? (
           <>
-            <SidebarLink Path="/explore" Page="Explore" Icon={FaHashtag} />
+            <SidebarLink path="/explore" page="Explore" Icon={FaHashtag} />
             <SidebarLink
-              Path="/notifications"
-              Page="Notifications"
+              path="/notifications"
+              page="Notifications"
               Icon={FaBell}
             />
-            <SidebarLink Path="/messages" Page="Messages" Icon={FaEnvelope} />
-            <SidebarLink Path="/bookmarks" Page="Bookmarks" Icon={FaBookmark} />
-            <SidebarLink Path="/lists" Page="Lists" Icon={FaFileAlt} />
+            <SidebarLink path="/messages" page="Messages" Icon={FaEnvelope} />
+            <SidebarLink path="/bookmarks" page="Bookmarks" Icon={FaBookmark} />
+            <SidebarLink path="/lists" page="Lists" Icon={FaFileAlt} />
             <SidebarLink
-              Path={`/user/${context?.user?.uid}/tweets`}
-              Page="Profile"
+              path={`/user/${context?.user?.uid}`}
+              page="Profile"
               Icon={FaRegUserCircle}
             />
           </>
         ) : null}
 
-        <SidebarLink Path="" Page="More" Icon={FaEllipsisH} />
+        <SidebarLink path="" page="More" Icon={FaEllipsisH} />
         {/* login button */}
         {context?.user ? (
           <button onClick={logOut} className={styles.login}>

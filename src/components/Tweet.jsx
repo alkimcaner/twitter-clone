@@ -75,19 +75,19 @@ const Tweet = ({ tweet }) => {
   useEffect(() => {
     setLike(tweet.likes?.includes(context?.user?.uid) ? true : false);
     setBookmark(tweet.bookmarks?.includes(context?.user?.uid) ? true : false);
-  }, [context.user]);
+  }, [context?.user]);
 
   return (
     <div className={styles.tweet} ref={tweetRef}>
       <div>
-        <Link to={`/user/${tweet.uid}/tweets`}>
+        <Link to={`/user/${tweet.uid}`}>
           <img src={tweet.userPhoto} alt="avatar" className="profileicon" />
         </Link>
       </div>
 
       <div className={styles.content}>
         <div>
-          <Link to={`/user/${tweet.uid}/tweets`} className={styles.user}>
+          <Link to={`/user/${tweet.uid}`} className={styles.user}>
             {tweet.name}
           </Link>
           <span className={styles.username}>

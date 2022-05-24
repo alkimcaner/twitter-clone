@@ -50,11 +50,11 @@ const Profile = () => {
             </div>
             <div className={styles.lastonline}>
               <HiOutlineStatusOnline /> Last Online:{" "}
-              <TimeAgo date={parseInt(profile.lastLogin)} />
+              <TimeAgo date={parseInt(profile.lastLogin) || Date.now()} />
             </div>
           </div>
           <div className={styles.menu}>
-            <Link to="tweets" className={styles.menulink}>
+            <Link to="" className={styles.menulink}>
               <span>Tweets</span>
             </Link>
             <Link to="likes" className={styles.menulink}>
