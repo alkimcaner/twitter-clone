@@ -2,7 +2,13 @@ import React, { useContext, useEffect, useRef, useState } from "react";
 import styles from "./Tweet.module.css";
 import TimeAgo from "react-timeago";
 import { FcLikePlaceholder, FcLike } from "react-icons/fc";
-import { FaBookmark, FaRegBookmark, FaTrashAlt } from "react-icons/fa";
+import {
+  FaBookmark,
+  FaRegBookmark,
+  FaTrashAlt,
+  FaComments,
+  FaReply,
+} from "react-icons/fa";
 import { RiMoreFill } from "react-icons/ri";
 import { UserContext } from "../App";
 import { doc, updateDoc, deleteDoc } from "firebase/firestore/lite";
@@ -95,10 +101,20 @@ const Tweet = ({ tweet }) => {
               {tweet.name}
             </Link>
             <span className={styles.username}>
-              @{tweet.name.toLowerCase().replace(/\s+/g, "")} ·{" "}
-              <TimeAgo date={tweet.time.seconds * 1000} />
+              @{tweet.name?.toLowerCase().replace(/\s+/g, "")} ·{" "}
+              <TimeAgo date={tweet.time?.seconds * 1000 || Date.now()} />
             </span>
           </div>
+          {tweet.parentTweet != "" && (
+            <div>
+              <Link
+                to={`/comments/${tweet.parentTweet}`}
+                className={styles.reply}
+              >
+                <FaReply /> Reply
+              </Link>
+            </div>
+          )}
           {tweet.text}
           {tweet.image && (
             <img src={tweet.image} alt="" className={styles.image} />
@@ -110,6 +126,9 @@ const Tweet = ({ tweet }) => {
                   {like ? <FcLike /> : <FcLikePlaceholder />}
                   {tweet.likes?.length}
                 </div>
+                <Link to={`/comments/${tweet.id}`} className={styles.comment}>
+                  <FaComments />
+                </Link>
                 <div className={styles.bookmark} onClick={bookmarkTweet}>
                   {bookmark ? <FaBookmark /> : <FaRegBookmark />}
                 </div>
@@ -129,12 +148,12 @@ const Tweet = ({ tweet }) => {
               onClick={() => setTweetMenu((currentValue) => !currentValue)}
             >
               <RiMoreFill />
+              {tweetMenu && (
+                <div className={styles.delete} onClick={deleteTweet}>
+                  <FaTrashAlt /> Delete tweet
+                </div>
+              )}
             </div>
-            {tweetMenu && (
-              <div className={styles.delete} onClick={deleteTweet}>
-                <FaTrashAlt /> Delete tweet
-              </div>
-            )}
           </div>
         )}
       </div>

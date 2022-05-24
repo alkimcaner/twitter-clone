@@ -1,14 +1,14 @@
 .tweetbox {
   display: flex;
   border-bottom: 1px solid rgb(var(--textcolor), 0.1);
-  padding: 0 1rem;
+  padding: 1rem;
 }
 
 .tweet {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  padding: 1rem;
+  padding: 0.5rem;
   width: 100%;
 }
 
@@ -18,8 +18,8 @@
   outline: none;
   resize: vertical;
   font-family: inherit;
-  color: rgb(var(--textcolor), 1);
-  background-color: rgb(var(--bgcolor), 1);
+  color: rgb(var(--textcolor));
+  background-color: rgb(var(--bgcolor));
   min-height: 4rem;
   max-height: 24rem;
 }
@@ -38,6 +38,7 @@
 .media {
   display: flex;
   gap: 1rem;
+  align-items: center;
 }
 
 .mediaicon:hover {
@@ -62,6 +63,14 @@
 
 .btn:disabled {
   cursor: not-allowed;
+}
+
+.imageinput {
+  background-color: rgb(var(--textcolor), 0.1);
+  color: rgb(var(--textcolor));
+  border: none;
+  border-radius: 1rem;
+  padding: 0.5rem;
 }
 
 @media screen and (max-width: 800px) {

@@ -33,6 +33,12 @@
   margin-left: 0.5rem;
 }
 
+.reply {
+  color: #00abee;
+  font-weight: lighter;
+  text-decoration: none;
+}
+
 .image {
   width: 100%;
   border-radius: 1rem;
@@ -49,33 +55,69 @@
 
 .like {
   display: inline;
+  color: rgb(var(--textcolor));
+  padding: 0.5rem;
+  border-radius: 16rem;
+  line-height: 0%;
 }
 
 .like:hover {
   cursor: pointer;
+  background-color: rgb(255, 0, 0, 0.5);
+}
+
+.comment {
+  display: inline;
+  color: rgb(var(--textcolor));
+  padding: 0.5rem;
+  border-radius: 16rem;
+  line-height: 0%;
+}
+
+.comment:hover {
+  cursor: pointer;
+  background-color: #00abee80;
 }
 
 .bookmark {
   display: inline;
   color: rgb(var(--textcolor));
+  padding: 0.5rem;
+  border-radius: 16rem;
   line-height: 0%;
 }
 
 .bookmark:hover {
   cursor: pointer;
+  background-color: rgba(200, 200, 0, 0.5);
+}
+
+.more {
+  padding: 0.5rem;
+  border-radius: 16rem;
+  line-height: 0%;
+  position: relative;
 }
 
 .more:hover {
   cursor: pointer;
+  background-color: rgb(var(--textcolor), 0.1);
 }
 
 .delete {
-  position: fixed;
+  position: absolute;
+  right: 50%;
+  top: 40px;
+  width: max-content;
   background-color: rgb(var(--bgcolor));
   color: red;
   box-shadow: 0 0 10px 0 rgb(var(--textcolor), 0.2);
   padding: 1rem;
   border-radius: 0.5rem;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .delete:hover {

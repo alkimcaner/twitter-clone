@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import styles from "./Feed.module.css";
 import { db } from "../firebase";
-import { collection, getDocs, query, orderBy } from "firebase/firestore/lite";
+import { collection, getDocs, query, where } from "firebase/firestore/lite";
 import Tweet from "../components/Tweet";
 import Tweetbox from "../components/Tweetbox";
 import PageTitle from "../components/PageTitle";
@@ -15,13 +15,15 @@ const Feed = () => {
     try {
       const tweetsCollection = query(
         collection(db, "tweets"),
-        orderBy("time", "desc")
+        where("parentTweet", "==", "")
       );
       const tweetsSnapshot = await getDocs(tweetsCollection);
       setTweets(
-        tweetsSnapshot.docs.map((doc) => {
-          return { ...doc.data(), id: doc.id };
-        })
+        tweetsSnapshot.docs
+          .map((doc) => {
+            return { ...doc.data(), id: doc.id };
+          })
+          .sort((a, b) => (a.time < b.time ? 1 : -1))
       );
     } catch (error) {
       console.log(error);
@@ -35,7 +37,7 @@ const Feed = () => {
   return (
     <div className={styles.feed}>
       <PageTitle page="Home" back={false} />
-      {context?.user && <Tweetbox getTweets={getTweets} />}
+      {context?.user && <Tweetbox getTweets={getTweets} parentTweet="" />}
       {tweets.map((tweet) => (
         <Tweet key={Math.random()} tweet={tweet} />
       ))}

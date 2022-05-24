@@ -15,13 +15,14 @@ const UserTweets = () => {
         where("uid", "==", params.id)
       );
       const tweetsSnapshot = await getDocs(tweetsCollection);
-      const sortedTweets = tweetsSnapshot.docs
+      const tweetsArray = tweetsSnapshot.docs
         .map((doc) => {
           return { ...doc.data(), id: doc.id };
         })
+        .filter((e) => e.parentTweet == "")
         .sort((a, b) => (a.time < b.time ? 1 : -1));
 
-      setTweets(sortedTweets);
+      setTweets(tweetsArray);
     } catch (error) {
       console.log(error);
     }

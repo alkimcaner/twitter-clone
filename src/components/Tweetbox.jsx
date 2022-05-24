@@ -5,7 +5,7 @@ import { db } from "../firebase";
 import { collection, addDoc, Timestamp } from "firebase/firestore/lite";
 import { FaPhotoVideo } from "react-icons/fa";
 
-const Tweetbox = ({ getTweets }) => {
+const Tweetbox = ({ getTweets, parentTweet }) => {
   const [showImageInput, setShowImageInput] = useState(false);
   const context = useContext(UserContext);
   const TweetText = useRef(null);
@@ -28,6 +28,7 @@ const Tweetbox = ({ getTweets }) => {
       time: Timestamp.now().toDate(),
       likes: [],
       bookmarks: [],
+      parentTweet: parentTweet,
     };
 
     try {

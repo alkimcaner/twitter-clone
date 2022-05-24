@@ -4,7 +4,7 @@ import { db } from "../firebase";
 import { useParams } from "react-router-dom";
 import Tweet from "../components/Tweet";
 
-const UserLikes = () => {
+const UserReplies = () => {
   const params = useParams();
   const [tweets, setTweets] = useState([]);
 
@@ -12,13 +12,14 @@ const UserLikes = () => {
     try {
       const tweetsCollection = query(
         collection(db, "tweets"),
-        where("likes", "array-contains", params.id)
+        where("uid", "==", params.id)
       );
       const tweetsSnapshot = await getDocs(tweetsCollection);
       const tweetsArray = tweetsSnapshot.docs
         .map((doc) => {
           return { ...doc.data(), id: doc.id };
         })
+        .filter((e) => e.parentTweet != "")
         .sort((a, b) => (a.time < b.time ? 1 : -1));
 
       setTweets(tweetsArray);
@@ -40,4 +41,4 @@ const UserLikes = () => {
   );
 };
 
-export default UserLikes;
+export default UserReplies;

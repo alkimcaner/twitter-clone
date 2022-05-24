@@ -10,6 +10,8 @@ import Widget from "./components/Widget";
 import UserTweets from "./components/UserTweets";
 import UserLikes from "./components/UserLikes";
 import PageTitle from "./components/PageTitle";
+import Comments from "./pages/Comments";
+import UserReplies from "./components/UserReplies";
 
 export const UserContext = createContext();
 
@@ -60,7 +62,9 @@ function App() {
               <Route path="user/:id" element={<Profile />}>
                 <Route index element={<UserTweets />} />
                 <Route path="likes" element={<UserLikes />} />
+                <Route path="replies" element={<UserReplies />} />
               </Route>
+              <Route path="comments/:id" element={<Comments />} />
               <Route path="search" element={<Search />} />
               <Route path="*" element={<div>Invalid page</div>} />
             </Routes>

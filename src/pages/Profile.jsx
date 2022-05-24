@@ -60,6 +60,9 @@ const Profile = () => {
             <Link to="likes" className={styles.menulink}>
               <span>Likes</span>
             </Link>
+            <Link to="replies" className={styles.menulink}>
+              <span>Replies</span>
+            </Link>
           </div>
           <Outlet />
         </>
