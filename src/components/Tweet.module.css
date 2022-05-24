@@ -65,8 +65,17 @@
   cursor: pointer;
 }
 
+.more:hover {
+  cursor: pointer;
+}
+
 .delete {
-  margin-left: auto;
+  position: fixed;
+  background-color: rgb(var(--bgcolor));
+  color: red;
+  box-shadow: 0 0 10px 0 rgb(var(--textcolor), 0.2);
+  padding: 1rem;
+  border-radius: 0.5rem;
 }
 
 .delete:hover {

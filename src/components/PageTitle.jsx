@@ -6,11 +6,11 @@ import { IoArrowBack } from "react-icons/io5";
 const PageTitle = ({ page, back }) => {
   return (
     <div className={styles.titlebar}>
-      {back ? (
+      {back && (
         <Link to={-1} className={styles.back}>
           <IoArrowBack />
         </Link>
-      ) : null}
+      )}
 
       <div className={styles.title}>{page}</div>
     </div>

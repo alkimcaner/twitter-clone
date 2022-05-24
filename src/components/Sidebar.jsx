@@ -82,7 +82,7 @@ const Sidebar = () => {
       </Link>
       <nav className={styles.nav}>
         <SidebarLink path="/" page="Home" Icon={FaHouseUser} />
-        {context?.user ? (
+        {context?.user && (
           <>
             <SidebarLink path="/explore" page="Explore" Icon={FaHashtag} />
             <SidebarLink
@@ -99,7 +99,7 @@ const Sidebar = () => {
               Icon={FaRegUserCircle}
             />
           </>
-        ) : null}
+        )}
 
         <SidebarLink path="" page="More" Icon={FaEllipsisH} />
         {/* login button */}

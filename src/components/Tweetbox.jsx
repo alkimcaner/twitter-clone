@@ -57,7 +57,7 @@ const Tweetbox = ({ getTweets }) => {
             <div className={styles.mediaicon} onClick={toggleImageInput}>
               <FaPhotoVideo />
             </div>
-            {showImageInput ? (
+            {showImageInput && (
               <input
                 type="url"
                 placeholder="Image URL"
@@ -65,7 +65,7 @@ const Tweetbox = ({ getTweets }) => {
                 ref={ImageURL}
                 required
               ></input>
-            ) : null}
+            )}
           </div>
           <input type="submit" className={styles.btn} value="Tweet" />
         </div>
