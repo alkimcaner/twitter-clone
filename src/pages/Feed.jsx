@@ -18,13 +18,13 @@ const Feed = () => {
         where("parentTweet", "==", "")
       );
       const tweetsSnapshot = await getDocs(tweetsCollection);
-      setTweets(
-        tweetsSnapshot.docs
-          .map((doc) => {
-            return { ...doc.data(), id: doc.id };
-          })
-          .sort((a, b) => (a.time < b.time ? 1 : -1))
-      );
+      const tweetsArray = tweetsSnapshot.docs
+        .map((doc) => {
+          return { ...doc.data(), id: doc.id };
+        })
+        .sort((a, b) => (a.time < b.time ? 1 : -1));
+
+      setTweets(tweetsArray);
     } catch (error) {
       console.log(error);
     }

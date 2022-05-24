@@ -134,10 +134,15 @@ const Tweet = ({ tweet }) => {
                 </div>
               </>
             ) : (
-              <div className={styles.like}>
-                <FcLike />
-                {tweet.likes?.length}
-              </div>
+              <>
+                <div className={styles.like}>
+                  <FcLike />
+                  {tweet.likes?.length}
+                </div>
+                <Link to={`/comments/${tweet.id}`} className={styles.comment}>
+                  <FaComments />
+                </Link>
+              </>
             )}
           </div>
         </div>

@@ -14,7 +14,7 @@ const Search = () => {
       const tweetsCollection = collection(db, "tweets");
 
       const tweetsSnapshot = await getDocs(tweetsCollection);
-      const filteredTweets = tweetsSnapshot.docs
+      const tweetsArray = tweetsSnapshot.docs
         .map((doc) => {
           return { ...doc.data(), id: doc.id };
         })
@@ -23,7 +23,7 @@ const Search = () => {
         )
         .sort((a, b) => (a.time < b.time ? 1 : -1));
 
-      setTweets(filteredTweets);
+      setTweets(tweetsArray);
     } catch (error) {
       console.log(error);
     }
