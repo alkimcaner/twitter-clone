@@ -2,11 +2,12 @@ import "./App.css";
 import { createContext, useState, useLayoutEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Sidebar from "./components/Sidebar";
+import Widget from "./components/Widget";
+import ProtectedPage from "./pages/ProtectedPage";
 import Feed from "./pages/Feed";
 import Profile from "./pages/Profile";
 import Bookmarks from "./pages/Bookmarks";
 import Search from "./pages/Search";
-import Widget from "./components/Widget";
 import UserTweets from "./components/UserTweets";
 import UserLikes from "./components/UserLikes";
 import PageTitle from "./components/PageTitle";
@@ -44,20 +45,43 @@ function App() {
               <Route path="/" element={<Feed />} />
               <Route
                 path="explore"
-                element={<PageTitle page="Explore" back={false} />}
+                element={
+                  <ProtectedPage user={user}>
+                    <PageTitle page="Explore" back={false} />
+                  </ProtectedPage>
+                }
               />
               <Route
                 path="notifications"
-                element={<PageTitle page="Notifications" back={false} />}
+                element={
+                  <ProtectedPage user={user}>
+                    <PageTitle page="Notifications" back={false} />
+                  </ProtectedPage>
+                }
               />
               <Route
                 path="messages"
-                element={<PageTitle page="Messages" back={false} />}
+                element={
+                  <ProtectedPage user={user}>
+                    <PageTitle page="Messages" back={false} />
+                  </ProtectedPage>
+                }
               />
-              <Route path="bookmarks" element={<Bookmarks />} />
+              <Route
+                path="bookmarks"
+                element={
+                  <ProtectedPage user={user}>
+                    <Bookmarks />
+                  </ProtectedPage>
+                }
+              />
               <Route
                 path="lists"
-                element={<PageTitle page="Lists" back={false} />}
+                element={
+                  <ProtectedPage user={user}>
+                    <PageTitle page="Lists" back={false} />
+                  </ProtectedPage>
+                }
               />
               <Route path="user/:id" element={<Profile />}>
                 <Route index element={<UserTweets />} />

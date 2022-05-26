@@ -56,6 +56,8 @@ const Sidebar = () => {
 
   onAuthStateChanged(auth, async (currentUser) => {
     try {
+      context?.setUser(currentUser);
+
       if (currentUser) {
         const userDocRef = doc(db, "users", currentUser.uid);
         await setDoc(userDocRef, {
@@ -69,8 +71,6 @@ const Sidebar = () => {
     } catch (error) {
       console.log(error);
     }
-
-    context?.setUser(currentUser);
   });
 
   return (
