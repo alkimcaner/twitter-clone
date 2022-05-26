@@ -47,7 +47,7 @@
 .interaction {
   display: flex;
   align-items: center;
-  gap: 4rem;
+  gap: 10%;
   user-select: none;
   font-size: 16px;
   margin-top: 0.5rem;
