@@ -20,9 +20,9 @@ const Tweetbox = ({ getTweets, parentTweet }) => {
     if (!context?.user) return;
 
     const tweet = {
-      uid: context?.user.uid,
-      name: context?.user.displayName,
-      userPhoto: context?.user.photoURL,
+      uid: context?.user?.uid,
+      name: context?.user?.displayName,
+      userPhoto: context?.user?.photoURL,
       text: TweetText.current?.value,
       image: ImageURL.current?.value || "",
       time: Timestamp.now().toDate(),
@@ -43,7 +43,7 @@ const Tweetbox = ({ getTweets, parentTweet }) => {
 
   return (
     <form className={styles.tweetbox} onSubmit={sendTweet}>
-      <img src={context?.user.photoURL} alt="avatar" className="profileicon" />
+      <img src={context?.user?.photoURL} alt="avatar" className="profileicon" />
       <div className={styles.tweet}>
         <textarea
           type="text"
