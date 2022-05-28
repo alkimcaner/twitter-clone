@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Navigate } from "react-router-dom";
+import UserContext from "../UserContext";
 
-const ProtectedPage = ({ children, user }) => {
-  if (!user) {
+const ProtectedPage = ({ children }) => {
+  const context = useContext(UserContext);
+
+  if (!context?.user) {
     return <Navigate to="/" replace={true} />;
   }
 

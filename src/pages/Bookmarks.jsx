@@ -1,15 +1,17 @@
 import React, { useState, useContext, useEffect } from "react";
-import { UserContext } from "../App";
-import PageTitle from "../components/PageTitle";
-import { collection, query, where, getDocs } from "firebase/firestore/lite";
+import UserContext from "../UserContext";
+//Firebase
 import { db } from "../firebase";
+import { collection, query, where, getDocs } from "firebase/firestore/lite";
+//Components
 import Tweet from "../components/Tweet";
+import PageTitle from "../components/PageTitle";
 
 const Bookmarks = () => {
   const context = useContext(UserContext);
   const [tweets, setTweets] = useState([]);
 
-  async function getTweets() {
+  const getTweets = async () => {
     try {
       const tweetsCollection = query(
         collection(db, "tweets"),
@@ -26,7 +28,7 @@ const Bookmarks = () => {
     } catch (error) {
       console.log(error);
     }
-  }
+  };
 
   useEffect(() => {
     getTweets();

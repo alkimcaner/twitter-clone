@@ -1,7 +1,14 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import styles from "./Tweet.module.css";
+import UserContext from "../UserContext";
 import TimeAgo from "react-timeago";
+//Firebase
+import { db } from "../firebase";
+import { doc, updateDoc, deleteDoc } from "firebase/firestore/lite";
+//Icons
 import { FcLikePlaceholder, FcLike } from "react-icons/fc";
+import { RiMoreFill } from "react-icons/ri";
 import {
   FaBookmark,
   FaRegBookmark,
@@ -9,11 +16,6 @@ import {
   FaComments,
   FaReply,
 } from "react-icons/fa";
-import { RiMoreFill } from "react-icons/ri";
-import { UserContext } from "../App";
-import { doc, updateDoc, deleteDoc } from "firebase/firestore/lite";
-import { db } from "../firebase";
-import { Link } from "react-router-dom";
 
 const Tweet = ({ tweet }) => {
   const context = useContext(UserContext);
@@ -24,7 +26,7 @@ const Tweet = ({ tweet }) => {
   const isStillLike = useRef(false);
   const isStillBookmark = useRef(false);
 
-  async function likeTweet() {
+  const likeTweet = async () => {
     if (!context?.user || isStillLike.current) return;
     isStillLike.current = true;
 
@@ -47,9 +49,9 @@ const Tweet = ({ tweet }) => {
     }
 
     isStillLike.current = false;
-  }
+  };
 
-  async function bookmarkTweet() {
+  const bookmarkTweet = async () => {
     if (!context?.user || isStillBookmark.current) return;
     isStillBookmark.current = true;
 
@@ -72,13 +74,13 @@ const Tweet = ({ tweet }) => {
     }
 
     isStillBookmark.current = false;
-  }
+  };
 
-  async function deleteTweet() {
+  const deleteTweet = async () => {
     if (tweet.uid != context?.user?.uid) return;
     await deleteDoc(doc(db, "tweets", tweet.id));
     setTweetState(null);
-  }
+  };
 
   useEffect(() => {
     setTweetState(tweet);
@@ -123,7 +125,7 @@ const Tweet = ({ tweet }) => {
             {context?.user ? (
               <>
                 <div className={styles.like} onClick={likeTweet}>
-                  {like ? <FcLike /> : <FcLikePlaceholder />}
+                  {like ? <FcLike /> : <FcLikePlaceholder />}{" "}
                   {tweet.likes?.length}
                 </div>
                 <Link to={`/comments/${tweet.id}`} className={styles.comment}>

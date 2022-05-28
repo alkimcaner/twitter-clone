@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import PageTitle from "../components/PageTitle";
-import { collection, getDocs } from "firebase/firestore/lite";
+//Firebase
 import { db } from "../firebase";
+import { collection, getDocs } from "firebase/firestore/lite";
+//Components
 import Tweet from "../components/Tweet";
+import PageTitle from "../components/PageTitle";
 
 const Search = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [tweets, setTweets] = useState([]);
 
-  async function getTweets() {
+  const getTweets = async () => {
     try {
       const tweetsCollection = collection(db, "tweets");
 
@@ -27,7 +29,7 @@ const Search = () => {
     } catch (error) {
       console.log(error);
     }
-  }
+  };
 
   useEffect(() => {
     getTweets();

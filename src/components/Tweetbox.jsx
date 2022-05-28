@@ -1,8 +1,10 @@
 import React, { useContext, useRef, useState } from "react";
-import { UserContext } from "../App";
 import styles from "./Tweetbox.module.css";
+import UserContext from "../UserContext";
+//Firebase
 import { db } from "../firebase";
 import { collection, addDoc, Timestamp } from "firebase/firestore/lite";
+//Icons
 import { FaPhotoVideo } from "react-icons/fa";
 
 const Tweetbox = ({ getTweets, parentTweet }) => {
@@ -11,11 +13,11 @@ const Tweetbox = ({ getTweets, parentTweet }) => {
   const TweetText = useRef(null);
   const ImageURL = useRef(null);
 
-  function toggleImageInput() {
+  const toggleImageInput = () => {
     setShowImageInput((currentValue) => !currentValue);
-  }
+  };
 
-  async function sendTweet(event) {
+  const sendTweet = async (event) => {
     event.preventDefault();
     if (!context?.user) return;
 
@@ -39,7 +41,7 @@ const Tweetbox = ({ getTweets, parentTweet }) => {
     } catch (error) {
       console.log(error);
     }
-  }
+  };
 
   return (
     <form className={styles.tweetbox} onSubmit={sendTweet}>

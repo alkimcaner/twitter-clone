@@ -6,10 +6,10 @@ const Widget = () => {
   const navigate = useNavigate();
   const searchInput = useRef(null);
 
-  async function searchTweets(event) {
+  const searchTweets = async (event) => {
     event.preventDefault();
     navigate(`/search?q=${searchInput.current.value}`, { replace: true });
-  }
+  };
 
   return (
     <div className={styles.widget}>

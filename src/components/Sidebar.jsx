@@ -1,9 +1,10 @@
 import React, { useContext } from "react";
 import styles from "./Sidebar.module.css";
-import { UserContext } from "../App";
+import UserContext from "../UserContext";
 import { Link, useNavigate } from "react-router-dom";
-import { setDoc, doc } from "firebase/firestore/lite";
+//Firebase
 import { db } from "../firebase";
+import { setDoc, doc } from "firebase/firestore/lite";
 import { auth } from "../firebase";
 import {
   GoogleAuthProvider,
@@ -11,7 +12,7 @@ import {
   signOut,
   onAuthStateChanged,
 } from "firebase/auth";
-
+//Icons
 import {
   FaTwitter,
   FaHouseUser,
@@ -26,33 +27,34 @@ import {
   FaSignOutAlt,
 } from "react-icons/fa";
 import { MdDarkMode, MdLightMode } from "react-icons/md";
+//Components
 import SidebarLink from "./SidebarLink";
 
 const Sidebar = () => {
   const context = useContext(UserContext);
   const navigate = useNavigate();
 
-  function toggleDark() {
+  const toggleDark = () => {
     context?.setDark((currentValue) => !currentValue);
-  }
+  };
 
-  async function loginGoogle() {
+  const loginGoogle = async () => {
     try {
       const provider = new GoogleAuthProvider();
       const user = await signInWithRedirect(auth, provider);
     } catch (error) {
       console.log(error);
     }
-  }
+  };
 
-  async function logOut() {
+  const logOut = async () => {
     try {
       await signOut(auth);
       navigate("/", { replace: true });
     } catch (error) {
       console.log(error);
     }
-  }
+  };
 
   onAuthStateChanged(auth, async (currentUser) => {
     try {

@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from "react";
-import { getDocs, collection, where, query } from "firebase/firestore/lite";
-import { db } from "../firebase";
 import { useParams } from "react-router-dom";
+//Firebase
+import { db } from "../firebase";
+import { getDocs, collection, where, query } from "firebase/firestore/lite";
+//Components
 import Tweet from "../components/Tweet";
 
 const UserLikes = () => {
   const params = useParams();
   const [tweets, setTweets] = useState([]);
 
-  async function getTweets() {
+  const getTweets = async () => {
     try {
       const tweetsCollection = query(
         collection(db, "tweets"),
@@ -25,7 +27,7 @@ const UserLikes = () => {
     } catch (error) {
       console.log(error);
     }
-  }
+  };
 
   useEffect(() => {
     getTweets();

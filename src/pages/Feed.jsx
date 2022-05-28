@@ -1,17 +1,19 @@
 import React, { useState, useEffect, useContext } from "react";
 import styles from "./Feed.module.css";
+//Firebase
 import { db } from "../firebase";
 import { collection, getDocs, query, where } from "firebase/firestore/lite";
+//Components
 import Tweet from "../components/Tweet";
 import Tweetbox from "../components/Tweetbox";
 import PageTitle from "../components/PageTitle";
-import { UserContext } from "../App";
+import UserContext from "../UserContext";
 
 const Feed = () => {
   const [tweets, setTweets] = useState([]);
   const context = useContext(UserContext);
 
-  async function getTweets() {
+  const getTweets = async () => {
     try {
       const tweetsCollection = query(
         collection(db, "tweets"),
@@ -28,7 +30,7 @@ const Feed = () => {
     } catch (error) {
       console.log(error);
     }
-  }
+  };
 
   useEffect(() => {
     getTweets();

@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
-import Tweetbox from "../components/Tweetbox";
-import Tweet from "../components/Tweet";
-import PageTitle from "../components/PageTitle";
+import UserContext from "../UserContext";
 import { useParams } from "react-router-dom";
+//Firebase
+import { db } from "../firebase";
 import {
   getDocs,
   getDoc,
@@ -11,8 +11,10 @@ import {
   collection,
   where,
 } from "firebase/firestore/lite";
-import { db } from "../firebase";
-import { UserContext } from "../App";
+//Components
+import Tweetbox from "../components/Tweetbox";
+import Tweet from "../components/Tweet";
+import PageTitle from "../components/PageTitle";
 
 const Comments = () => {
   const context = useContext(UserContext);
@@ -20,16 +22,16 @@ const Comments = () => {
   const [parentTweet, setParentTweet] = useState({});
   const [comments, setComments] = useState([]);
 
-  async function getParentTweet() {
+  const getParentTweet = async () => {
     try {
       const parentTweetDoc = await getDoc(doc(db, "tweets", params.id));
       setParentTweet({ ...parentTweetDoc.data(), id: parentTweetDoc.id });
     } catch (error) {
       console.log(error);
     }
-  }
+  };
 
-  async function getComments() {
+  const getComments = async () => {
     try {
       const tweetsCollection = query(
         collection(db, "tweets"),
@@ -46,7 +48,7 @@ const Comments = () => {
     } catch (error) {
       console.log(error);
     }
-  }
+  };
 
   useEffect(() => {
     getParentTweet();

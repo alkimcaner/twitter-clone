@@ -1,40 +1,28 @@
 import "./App.css";
-import { createContext, useState, useLayoutEffect } from "react";
+import { useContext } from "react";
+import UserContext from "./UserContext";
+import { UserContextProvider } from "./UserContext";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Sidebar from "./components/Sidebar";
-import Widget from "./components/Widget";
+//Pages
 import ProtectedPage from "./pages/ProtectedPage";
 import Feed from "./pages/Feed";
 import Profile from "./pages/Profile";
 import Bookmarks from "./pages/Bookmarks";
 import Search from "./pages/Search";
+//Components
+import Sidebar from "./components/Sidebar";
+import Widget from "./components/Widget";
 import UserTweets from "./components/UserTweets";
 import UserLikes from "./components/UserLikes";
 import PageTitle from "./components/PageTitle";
 import Comments from "./pages/Comments";
 import UserReplies from "./components/UserReplies";
 
-export const UserContext = createContext();
-
-function App() {
-  const [user, setUser] = useState({});
-  const [dark, setDark] = useState(
-    JSON.parse(localStorage.getItem("dark")) ?? false
-  );
-
-  useLayoutEffect(() => {
-    localStorage.setItem("dark", dark);
-    if (dark) {
-      document.body.classList.remove("light");
-      document.body.classList.add("dark");
-    } else {
-      document.body.classList.remove("dark");
-      document.body.classList.add("light");
-    }
-  }, [dark]);
+const App = () => {
+  const context = useContext(UserContext);
 
   return (
-    <UserContext.Provider value={{ user, setUser, dark, setDark }}>
+    <UserContextProvider>
       <Router>
         <div className="app">
           <div className="left">
@@ -46,7 +34,7 @@ function App() {
               <Route
                 path="explore"
                 element={
-                  <ProtectedPage user={user}>
+                  <ProtectedPage>
                     <PageTitle page="Explore" back={false} />
                   </ProtectedPage>
                 }
@@ -54,7 +42,7 @@ function App() {
               <Route
                 path="notifications"
                 element={
-                  <ProtectedPage user={user}>
+                  <ProtectedPage>
                     <PageTitle page="Notifications" back={false} />
                   </ProtectedPage>
                 }
@@ -62,7 +50,7 @@ function App() {
               <Route
                 path="messages"
                 element={
-                  <ProtectedPage user={user}>
+                  <ProtectedPage>
                     <PageTitle page="Messages" back={false} />
                   </ProtectedPage>
                 }
@@ -70,7 +58,7 @@ function App() {
               <Route
                 path="bookmarks"
                 element={
-                  <ProtectedPage user={user}>
+                  <ProtectedPage>
                     <Bookmarks />
                   </ProtectedPage>
                 }
@@ -78,7 +66,7 @@ function App() {
               <Route
                 path="lists"
                 element={
-                  <ProtectedPage user={user}>
+                  <ProtectedPage>
                     <PageTitle page="Lists" back={false} />
                   </ProtectedPage>
                 }
@@ -98,8 +86,8 @@ function App() {
           </div>
         </div>
       </Router>
-    </UserContext.Provider>
+    </UserContextProvider>
   );
-}
+};
 
 export default App;

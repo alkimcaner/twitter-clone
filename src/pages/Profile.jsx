@@ -1,25 +1,28 @@
 import React, { useEffect, useState } from "react";
 import styles from "./Profile.module.css";
 import { Outlet, Link, useParams } from "react-router-dom";
-import { getDoc, doc } from "firebase/firestore/lite";
+import TimeAgo from "react-timeago";
+//Firebase
 import { db } from "../firebase";
+import { getDoc, doc } from "firebase/firestore/lite";
+//Components
 import PageTitle from "../components/PageTitle";
+//Icons
 import { FaCalendarAlt } from "react-icons/fa";
 import { HiOutlineStatusOnline } from "react-icons/hi";
-import TimeAgo from "react-timeago";
 
 const Profile = () => {
   const params = useParams();
   const [profile, setProfile] = useState({});
 
-  async function getProfile() {
+  const getProfile = async () => {
     try {
       const profileDoc = await getDoc(doc(db, "users", params.id));
       setProfile(profileDoc.data());
     } catch (error) {
       console.log(error);
     }
-  }
+  };
 
   useEffect(() => {
     getProfile();
