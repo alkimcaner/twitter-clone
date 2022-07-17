@@ -2,6 +2,8 @@
 
 ### [Live demo](https://twitter-clone-flawn.vercel.app/)
 
+![gif](https://github.com/fl4wn/portfolio/blob/main/assets/project/twitter_banner.gif)
+
 ## Used Technologies
 
 - React
@@ -11,14 +13,14 @@
 
 ## Project Setup
 
-Install dependencies
+### Install dependencies
 
-### `yarn install` or `npm install`
+`yarn install` or `npm install`
 
-Start dev server
+### Start dev server
 
-### `yarn dev` or `npm run dev`
+`yarn dev` or `npm run dev`
 
-Build for production
+### Build for production
 
-### `yarn build` or `npm run build`
+`yarn build` or `npm run build`
