@@ -84,13 +84,17 @@ const Sidebar = () => {
       </Link>
       <nav className={styles.nav}>
         <SidebarLink path="/" page="Home" Icon={FaHouseUser} />
-        <SidebarLink path="/explore" page="Explore" Icon={FaHashtag} />
-        <SidebarLink path="/notifications" page="Notifications" Icon={FaBell} />
-        <SidebarLink path="/messages" page="Messages" Icon={FaEnvelope} />
-        <SidebarLink path="/bookmarks" page="Bookmarks" Icon={FaBookmark} />
-        <SidebarLink path="/lists" page="Lists" Icon={FaFileAlt} />
         {context?.user && (
           <>
+            <SidebarLink path="/explore" page="Explore" Icon={FaHashtag} />
+            <SidebarLink
+              path="/notifications"
+              page="Notifications"
+              Icon={FaBell}
+            />
+            <SidebarLink path="/messages" page="Messages" Icon={FaEnvelope} />
+            <SidebarLink path="/bookmarks" page="Bookmarks" Icon={FaBookmark} />
+            <SidebarLink path="/lists" page="Lists" Icon={FaFileAlt} />
             <SidebarLink
               path={`/user/${context?.user?.uid}`}
               page="Profile"
@@ -98,6 +102,7 @@ const Sidebar = () => {
             />
           </>
         )}
+
         <SidebarLink path="" page="More" Icon={FaEllipsisH} />
         {/* login button */}
         {context?.user ? (
