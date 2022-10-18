@@ -2,7 +2,7 @@
 
 ### [Live demo](https://twitter-clone-flawn.vercel.app/)
 
-![gif](https://github.com/fl4wn/portfolio/blob/main/assets/project/twitter_banner.gif)
+![gif](https://github.com/fl4wn/portfolio/blob/main/public/assets/projects/twitter_banner.gif)
 
 ## Used Technologies
 
