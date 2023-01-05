@@ -1,6 +1,6 @@
 # Twitter Clone
 
-[Live demo](https://twitter-clone-flawn.vercel.app/)
+[Live demo](https://twitter-clone.alkimcaner.com/)
 
 Built with:
 
@@ -11,7 +11,7 @@ Built with:
 
 ## Screenshot
 
-![gif](https://github.com/fl4wn/portfolio/blob/main/public/assets/projects/twitter_banner.gif)
+![gif](https://github.com/alkimcaner/portfolio/blob/main/public/assets/twitter.gif)
 
 ## Project Setup
 
