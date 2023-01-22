@@ -1,6 +1,6 @@
 # Twitter Clone
 
-[Live demo](https://twitter-clone.alkimcaner.com/)
+[Live demo](https://twitter-clone-flawn.vercel.app/)
 
 Built with:
 
