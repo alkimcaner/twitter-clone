@@ -8,9 +8,9 @@ import { setDoc, doc } from "firebase/firestore/lite";
 import { auth } from "../firebase";
 import {
   GoogleAuthProvider,
-  signInWithRedirect,
   signOut,
   onAuthStateChanged,
+  signInWithPopup,
 } from "firebase/auth";
 //Icons
 import {
@@ -41,7 +41,7 @@ const Sidebar = () => {
   const loginGoogle = async () => {
     try {
       const provider = new GoogleAuthProvider();
-      const user = await signInWithRedirect(auth, provider);
+      const user = await signInWithPopup(auth, provider);
     } catch (error) {
       console.log(error);
     }
