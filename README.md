@@ -11,7 +11,7 @@ Built with:
 
 ## Screenshot
 
-![gif](https://github.com/alkimcaner/portfolio/blob/main/public/assets/twitter.gif)
+![image](https://user-images.githubusercontent.com/17219339/234264836-863560e3-1118-4c79-a3c2-48e2c0c2dc5a.png)
 
 ## Project Setup
 
