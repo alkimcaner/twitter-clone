@@ -18,17 +18,17 @@ Built with:
 ### Install dependencies
 
 ```bash
-yarn install
+npm install
 ```
 
 ### Start dev server
 
 ```bash
-yarn dev
+npm run dev
 ```
 
 ### Build for production
 
 ```bash
-yarn build
+npm run build
 ```
